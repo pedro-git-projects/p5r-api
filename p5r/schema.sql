@@ -1,6 +1,5 @@
 DROP TABLE IF EXISTS PersonaResistances, PersonaSkills, PersonaStats, Personas, Skills CASCADE;
 
--- Table for Personas
 CREATE TABLE Personas (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -12,7 +11,6 @@ CREATE TABLE Personas (
     arcana VARCHAR(255) NOT NULL
 );
 
--- Table for Persona Resistances
 CREATE TABLE PersonaResistances (
     id SERIAL PRIMARY KEY,
     persona_id INT REFERENCES Personas(id) ON DELETE CASCADE,
@@ -28,7 +26,6 @@ CREATE TABLE PersonaResistances (
     curse VARCHAR(1) NOT NULL
 );
 
--- Table for Persona Skills
 CREATE TABLE PersonaSkills (
     id SERIAL PRIMARY KEY,
     persona_id INT REFERENCES Personas(id) ON DELETE CASCADE,
@@ -36,7 +33,6 @@ CREATE TABLE PersonaSkills (
     level INT NOT NULL
 );
 
--- Table for Persona Stats
 CREATE TABLE PersonaStats (
     id SERIAL PRIMARY KEY,
     persona_id INT REFERENCES Personas(id) ON DELETE CASCADE,
@@ -47,7 +43,6 @@ CREATE TABLE PersonaStats (
     lu INT NOT NULL
 );
 
--- Table for Skills
 CREATE TABLE Skills (
     id SERIAL PRIMARY KEY,
     element VARCHAR(255) NOT NULL,
