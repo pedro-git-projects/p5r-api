@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS PersonaResistances, PersonaSkills, PersonaStats, Personas, 
 
 CREATE TABLE Personas (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL UNIQUE,
     inherits VARCHAR(255) NOT NULL,
     item VARCHAR(255) NOT NULL,
     itemr VARCHAR(255) NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE PersonaStats (
 CREATE TABLE Skills (
     id SERIAL PRIMARY KEY,
     element VARCHAR(255) NOT NULL,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL UNIQUE,
     cost INT NOT NULL,
     effect VARCHAR(255) NOT NULL,
     target VARCHAR(255) NOT NULL

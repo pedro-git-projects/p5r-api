@@ -1,11 +1,10 @@
 from flask import Blueprint, jsonify, request
 from p5r.db import get_db
 
+persona_bp = Blueprint("personas", __name__)
 
-bp = Blueprint("personas", __name__)
 
-
-@bp.route("/personas", methods=["GET"])
+@persona_bp.route("/personas", methods=["GET"])
 def get_all_personas():
     db = get_db()
     cursor = db.cursor()
@@ -35,7 +34,7 @@ def get_all_personas():
     return jsonify(personas_list)
 
 
-@bp.route("/personas/<string:name>", methods=["GET"])
+@persona_bp.route("/personas/<string:name>", methods=["GET"])
 def get_persona_by_name(name):
     db = get_db()
     cursor = db.cursor()
@@ -118,7 +117,7 @@ def get_stats_for_persona(cursor, persona_id):
         return {}
 
 
-@bp.route("/personas", methods=["POST"])
+@persona_bp.route("/personas", methods=["POST"])
 def create_persona():
     db = get_db()
     cursor = db.cursor()
@@ -215,7 +214,7 @@ def create_persona():
         return jsonify({"error": "Failed to create Persona"}), 500
 
 
-@bp.route("/skills", methods=["GET"])
+@persona_bp.route("/skills", methods=["GET"])
 def get_all_skills():
     db = get_db()
     cursor = db.cursor()
@@ -240,7 +239,7 @@ def get_all_skills():
     return jsonify(skills_list)
 
 
-@bp.route("/personas/<string:name>", methods=["DELETE"])
+@persona_bp.route("/personas/<string:name>", methods=["DELETE"])
 def delete_persona_by_name(name):
     db = get_db()
     cursor = db.cursor()
@@ -275,7 +274,7 @@ def delete_persona_by_name(name):
         return jsonify({"error": "Failed to delete Persona"}), 500
 
 
-@bp.route("/personas/<string:name>", methods=["PUT"])
+@persona_bp.route("/personas/<string:name>", methods=["PUT"])
 def update_persona_by_name(name):
     db = get_db()
     cursor = db.cursor()

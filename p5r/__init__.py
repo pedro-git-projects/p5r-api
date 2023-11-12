@@ -27,8 +27,10 @@ def create_app(test_config=None):
 
     db.init_app(app)
 
-    from p5r.personas import bp
+    from p5r.personas import persona_bp
+    from p5r.skills import skills_bp 
 
-    app.register_blueprint(bp)
+    app.register_blueprint(persona_bp)
+    app.register_blueprint(skills_bp)
 
     return app
