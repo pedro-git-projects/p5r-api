@@ -6,6 +6,13 @@ skills_bp = Blueprint("skills", __name__)
 
 @skills_bp.route("/skills", methods=["GET"])
 def get_all_skill():
+    """
+    Get all skills
+    ---
+    responses:
+      200:
+        description: A list of skills
+    """
     db = get_db()
     cursor = db.cursor()
 
@@ -19,6 +26,32 @@ def get_all_skill():
 
 @skills_bp.route("/skills", methods=["POST"])
 def create_skill():
+    """
+    Create a new skill
+    ---
+    parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          type: object
+          properties:
+            element:
+              type: string
+            name:
+              type: string
+            cost:
+              type: integer
+            effect:
+              type: string
+            target:
+              type: string
+    responses:
+      201:
+        description: Skill created successfully
+      400:
+        description: Skill with the same name already exists
+    """
     db = get_db()
     cursor = db.cursor()
 
@@ -50,6 +83,44 @@ def create_skill():
 
 @skills_bp.route("/skills/many", methods=["POST"])
 def create_skills():
+    """
+    Create multiple skills
+    ---
+    parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              element:
+                type: string
+              name:
+                type: string
+              cost:
+                type: integer
+              effect:
+                type: string
+              target:
+                type: string
+    responses:
+      201:
+        description: Skills created successfully
+      400:
+        description: Invalid data format. Expected a list of skills
+        content:
+          application/json:
+            example:
+              error: "Invalid data format. Expected a list of skills"
+      400:
+        description: Skills with names already exist
+        content:
+          application/json:
+            example:
+              error: "Skills with names [list_of_existing_skills] already exist"
+    """
     db = get_db()
     cursor = db.cursor()
 
@@ -97,6 +168,22 @@ def create_skills():
 
 @skills_bp.route("/skills/<string:name>", methods=["GET"])
 def get_skill_by_name(name):
+    """
+    Get skill by name
+    ---
+    parameters:
+      - name: name
+        in: path
+        type: string
+        required: true
+        description: The name of the skill
+    responses:
+      200:
+        description: Skill information
+      404:
+        description: Skill not found
+    """
+
     db = get_db()
     cursor = db.cursor()
 
