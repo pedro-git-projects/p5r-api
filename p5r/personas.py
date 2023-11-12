@@ -6,6 +6,13 @@ persona_bp = Blueprint("personas", __name__)
 
 @persona_bp.route("/personas", methods=["GET"])
 def get_all_personas():
+    """
+    Get all personas
+    ---
+    responses:
+      200:
+        description: A list of personas
+    """
     db = get_db()
     cursor = db.cursor()
 
@@ -36,6 +43,22 @@ def get_all_personas():
 
 @persona_bp.route("/personas/<string:name>", methods=["GET"])
 def get_persona_by_name(name):
+    """
+    Get persona by name
+    ---
+    parameters:
+      - name: name
+        in: path
+        type: string
+        required: true
+        description: The name of the persona for case-insensitive and partial matching
+    responses:
+      200:
+        description: A persona object
+      404:
+        description: Persona not found
+    """
+
     db = get_db()
     cursor = db.cursor()
 
@@ -69,6 +92,21 @@ def get_persona_by_name(name):
 
 @persona_bp.route("/personas/detailed/<string:name>", methods=["GET"])
 def get_detailed_persona_by_name(name):
+    """
+    Get detailed persona by name
+    ---
+    parameters:
+      - name: name
+        in: path
+        type: string
+        required: true
+        description: The name of the persona for case-insensitive matching
+    responses:
+      200:
+        description: A detailed persona object
+      404:
+        description: Persona not found
+    """
     db = get_db()
     cursor = db.cursor()
 
@@ -197,6 +235,70 @@ def get_stats_for_persona(cursor, persona_id):
 
 @persona_bp.route("/personas", methods=["POST"])
 def create_persona():
+    """
+    Create a new persona
+    ---
+    parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+            inherits:
+              type: string
+            item:
+              type: string
+            itemr:
+              type: string
+            lvl:
+              type: integer
+            trait:
+              type: string
+            arcana:
+              type: string
+            resists:
+              type: object
+              properties:
+                phys:
+                  type: string
+                gun:
+                  type: string
+                fire:
+                  type: string
+                ice:
+                  type: string
+                elec:
+                  type: string
+                wind:
+                  type: string
+                pys:
+                  type: string
+                nuke:
+                  type: string
+                bless:
+                  type: string
+                curse:
+                  type: string
+            skills:
+              type: object
+            stats:
+              type: object
+    responses:
+      201:
+        description: Persona created successfully
+        schema:
+          type: object
+          properties:
+            id:
+              type: integer
+      400:
+        description: A persona with the same name already exists
+      500:
+        description: Failed to create Persona
+    """
     db = get_db()
     cursor = db.cursor()
 
@@ -294,6 +396,68 @@ def create_persona():
 
 @persona_bp.route("/personas/many", methods=["POST"])
 def create_personas():
+    """
+    Create multiple personas
+    ---
+    parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              inherits:
+                type: string
+              item:
+                type: string
+              itemr:
+                type: string
+              lvl:
+                type: integer
+              trait:
+                type: string
+              arcana:
+                type: string
+              resists:
+                type: object
+                properties:
+                  phys:
+                    type: string
+                  gun:
+                    type: string
+                  fire:
+                    type: string
+                  ice:
+                    type: string
+                  elec:
+                    type: string
+                  wind:
+                    type: string
+                  pys:
+                    type: string
+                  nuke:
+                    type: string
+                  bless:
+                    type: string
+                  curse:
+                    type: string
+              skills:
+                type: object
+              stats:
+                type: object
+    responses:
+      201:
+        description: Personas created successfully
+      400:
+        description: Invalid data format. Expected a list of personas
+      500:
+        description: Failed to create Personas
+    """
+
     db = get_db()
     cursor = db.cursor()
 
@@ -399,33 +563,26 @@ def create_personas():
         return jsonify({"error": "Failed to create Personas"}), 500
 
 
-@persona_bp.route("/skills", methods=["GET"])
-def get_all_skills():
-    db = get_db()
-    cursor = db.cursor()
-
-    cursor.execute("SELECT * FROM Skills")
-    skills = cursor.fetchall()
-
-    skills_list = []
-    for skill in skills:
-        skill_dict = {
-            "id": skill[0],
-            "element": skill[1],
-            "name": skill[2],
-            "cost": skill[3],
-            "effect": skill[4],
-            "target": skill[5],
-        }
-        skills_list.append(skill_dict)
-
-    cursor.close()
-
-    return jsonify(skills_list)
-
-
 @persona_bp.route("/personas/<string:name>", methods=["DELETE"])
 def delete_persona_by_name(name):
+    """
+    Delete persona by name
+    ---
+    parameters:
+      - name: name
+        in: path
+        type: string
+        required: true
+        description: The name of the persona to be deleted
+    responses:
+      200:
+        description: Persona deleted successfully
+      404:
+        description: Persona not found
+      500:
+        description: Failed to delete Persona
+    """
+
     db = get_db()
     cursor = db.cursor()
 
@@ -460,6 +617,41 @@ def delete_persona_by_name(name):
 
 @persona_bp.route("/personas/<string:name>", methods=["PUT"])
 def update_persona_by_name(name):
+    """
+    Update persona by name
+    ---
+    parameters:
+      - name: name
+        in: path
+        type: string
+        required: true
+        description: The name of the persona to be updated
+      - name: body
+        in: body
+        required: true
+        schema:
+          type: object
+          properties:
+            inherits:
+              type: string
+            item:
+              type: string
+            itemr:
+              type: string
+            lvl:
+              type: integer
+            trait:
+              type: string
+            arcana:
+              type: string
+    responses:
+      200:
+        description: Persona updated successfully
+      404:
+        description: Persona not found
+      500:
+        description: Failed to update Persona
+    """
     db = get_db()
     cursor = db.cursor()
 
