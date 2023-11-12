@@ -67,6 +67,39 @@ def get_persona_by_name(name):
     return jsonify(persona_dict)
 
 
+@persona_bp.route("/personas/detailed/<string:name>", methods=["GET"])
+def get_detailed_persona_by_name(name):
+    db = get_db()
+    cursor = db.cursor()
+
+    # Fetching basic persona information
+    cursor.execute("SELECT * FROM Personas WHERE lower(name) = lower(%s)", (name,))
+    persona = cursor.fetchone()
+
+    if not persona:
+        cursor.close()
+        return jsonify({"error": "Persona not found"}), 404
+
+    persona_dict = {
+        "id": persona[0],
+        "name": persona[1],
+        "inherits": persona[2],
+        "item": persona[3],
+        "itemr": persona[4],
+        "lvl": persona[5],
+        "trait": persona[6],
+        "arcana": persona[7],
+        "resists": get_resists_for_persona(cursor, persona[0]),
+        "skills": get_skills_for_persona(cursor, persona[0]),
+        "detailed_skills": get_skills_for_persona_by_name(cursor, name),
+        "stats": get_stats_for_persona(cursor, persona[0]),
+    }
+
+    cursor.close()
+
+    return jsonify(persona_dict)
+
+
 def get_resists_for_persona(cursor, persona_id):
     cursor.execute(
         "SELECT * FROM PersonaResistances WHERE persona_id = %s", (persona_id,)
@@ -90,6 +123,17 @@ def get_resists_for_persona(cursor, persona_id):
         return {}
 
 
+def skill_tuple_to_dict(skill_tuple):
+    return {
+        "id": skill_tuple[0],
+        "element": skill_tuple[1],
+        "name": skill_tuple[2],
+        "cost": skill_tuple[3],
+        "effect": skill_tuple[4],
+        "target": skill_tuple[5],
+    }
+
+
 def get_skills_for_persona(cursor, persona_id):
     cursor.execute("SELECT * FROM PersonaSkills WHERE persona_id = %s", (persona_id,))
     skills = cursor.fetchall()
@@ -99,6 +143,40 @@ def get_skills_for_persona(cursor, persona_id):
         skills_dict[skill[2]] = skill[3]
 
     return skills_dict
+
+
+def get_skills_for_persona_by_name(cursor, persona_name: str):
+    cursor.execute(
+        """
+        SELECT PersonaSkills.name
+        FROM Personas
+        JOIN PersonaSkills ON Personas.id = PersonaSkills.persona_id
+        WHERE Personas.name = %s
+        """,
+        (persona_name,),
+    )
+
+    skills = cursor.fetchall()
+    skills_list = [skill[0] for skill in skills]
+
+    detailed_skills = []
+    for skill_name in skills_list:
+        cursor.execute(
+            """
+            SELECT *
+            FROM Skills
+            WHERE name = %s
+            """,
+            (skill_name,),
+        )
+        skill_data = cursor.fetchone()
+        if skill_data:
+            skill_dict = skill_tuple_to_dict(skill_data)
+            detailed_skills.append(skill_dict)
+
+    print(f"detailed skills {detailed_skills}")
+
+    return detailed_skills
 
 
 def get_stats_for_persona(cursor, persona_id):
@@ -127,7 +205,7 @@ def create_persona():
 
         name = data["name"]
 
-        # Check if the persona with the same name already exists
+        # Checking if a persona with the same name already exists
         cursor.execute("SELECT id FROM Personas WHERE lower(name) = lower(%s)", (name,))
         existing_persona = cursor.fetchone()
 
@@ -214,6 +292,113 @@ def create_persona():
         return jsonify({"error": "Failed to create Persona"}), 500
 
 
+@persona_bp.route("/personas/many", methods=["POST"])
+def create_personas():
+    db = get_db()
+    cursor = db.cursor()
+
+    try:
+        data = request.get_json()
+
+        if not isinstance(data, list):
+            return (
+                jsonify({"error": "Invalid data format. Expected a list of personas"}),
+                400,
+            )
+
+        for persona_data in data:
+            name = persona_data.get("name")
+
+            cursor.execute(
+                "SELECT id FROM Personas WHERE lower(name) = lower(%s)", (name,)
+            )
+            existing_persona = cursor.fetchone()
+
+            if existing_persona:
+                return (
+                    jsonify(
+                        {"error": f"A persona with the name '{name}' already exists"}
+                    ),
+                    400,
+                )
+
+            inherits = persona_data.get("inherits")
+            item = persona_data.get("item")
+            itemr = persona_data.get("itemr")
+            lvl = persona_data.get("lvl")
+            trait = persona_data.get("trait")
+            arcana = persona_data.get("arcana")
+
+            cursor.execute(
+                """INSERT INTO Personas 
+                (name, inherits, item, itemr, lvl, trait, arcana) 
+                    VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING id""",
+                (name, inherits, item, itemr, lvl, trait, arcana),
+            )
+
+            persona_id = 0
+            row = cursor.fetchone()
+            if row is None:
+                return (
+                    jsonify({"error": "An error occurred on our side"}),
+                    500,
+                )
+            else:
+                persona_id = row[0]
+
+            resistances = persona_data.get("resists", {})
+            cursor.execute(
+                """INSERT INTO PersonaResistances 
+                (persona_id, phys, gun, fire, ice, elec, wind, pys, nuke, bless, curse) 
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+                (
+                    persona_id,
+                    resistances.get("phys", ""),
+                    resistances.get("gun", ""),
+                    resistances.get("fire", ""),
+                    resistances.get("ice", ""),
+                    resistances.get("elec", ""),
+                    resistances.get("wind", ""),
+                    resistances.get("pys", ""),
+                    resistances.get("nuke", ""),
+                    resistances.get("bless", ""),
+                    resistances.get("curse", ""),
+                ),
+            )
+
+            skills = persona_data.get("skills", {})
+            for skill_name, level in skills.items():
+                cursor.execute(
+                    """INSERT INTO PersonaSkills (persona_id, name, level) 
+                    VALUES (%s, %s, %s)""",
+                    (persona_id, skill_name, level),
+                )
+
+            stats = persona_data.get("stats", {})
+            cursor.execute(
+                """INSERT INTO PersonaStats (persona_id, st, ma, en, ag, lu) 
+                VALUES (%s, %s, %s, %s, %s, %s)""",
+                (
+                    persona_id,
+                    stats.get("st", 0),
+                    stats.get("ma", 0),
+                    stats.get("en", 0),
+                    stats.get("ag", 0),
+                    stats.get("lu", 0),
+                ),
+            )
+
+        db.commit()
+        cursor.close()
+
+        return jsonify({"message": "Personas created successfully"}), 201
+    except Exception as e:
+        print(f"Error creating Personas: {str(e)}")
+        db.rollback()
+        cursor.close()
+        return jsonify({"error": "Failed to create Personas"}), 500
+
+
 @persona_bp.route("/skills", methods=["GET"])
 def get_all_skills():
     db = get_db()
@@ -245,7 +430,6 @@ def delete_persona_by_name(name):
     cursor = db.cursor()
 
     try:
-        # Checking if the persona exists
         cursor.execute("SELECT * FROM Personas WHERE name = %s", (name,))
         persona = cursor.fetchone()
 
@@ -260,7 +444,7 @@ def delete_persona_by_name(name):
         cursor.execute("DELETE FROM PersonaSkills WHERE persona_id = %s", (persona_id,))
         cursor.execute("DELETE FROM PersonaStats WHERE persona_id = %s", (persona_id,))
 
-        # Then delete from the Personas table
+        # Then deleting it from the Personas table
         cursor.execute("DELETE FROM Personas WHERE id = %s", (persona_id,))
 
         db.commit()
