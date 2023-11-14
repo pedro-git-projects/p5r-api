@@ -1,4 +1,5 @@
 from flask import Blueprint, json
+from concurrent.futures import ThreadPoolExecutor
 from psycopg2 import Error
 from .data_maps import (
     SPECIAL_COMBOS,
@@ -27,7 +28,19 @@ class FusionCalculatorBlueprint:
     def setup_routes(self):
         self.blueprint.route(
             "/calculator/<string:persona1_name>/<string:persona2_name>", methods=["GET"]
-        )(self.fuse)
+        )(
+            self.fuse  # type: ignore
+        )
+        self.blueprint.route(
+            "/calculator/foward/<string:target_persona_name>", methods=["GET"]
+        )(
+            self.find_all_fusions_with_persona  # type:ignore
+        )
+        self.blueprint.route(
+            "/calculator/reverse/<string:persona_name>", methods=["GET"]
+        )(
+            self.get_recipes  # type: ignore
+        )
 
     def fuse(self, persona1_name: str, persona2_name: str):
         self.get_personas_from_server()
@@ -42,7 +55,7 @@ class FusionCalculatorBlueprint:
         result = self.get_special_fuse_result(persona1, persona2)
         if result is not None:
             return requests.get(
-                f"http://127.0.0.1:5000/personas/{result['name']}"
+                f"http://127.0.0.1:5000/personas/exact/{result['name']}"
             ).json()
 
         if (persona1["rare"] and not persona2["rare"]) or (
@@ -55,7 +68,7 @@ class FusionCalculatorBlueprint:
                 pass
             else:
                 return requests.get(
-                    f"http://127.0.0.1:5000/personas/{result['name']}"
+                    f"http://127.0.0.1:5000/personas/exact/{result['name']}"
                 ).json()
 
             return result
@@ -65,7 +78,7 @@ class FusionCalculatorBlueprint:
             pass
         else:
             return requests.get(
-                f"http://127.0.0.1:5000/personas/{result['name']}"
+                f"http://127.0.0.1:5000/personas/exact/{result['name']}"
             ).json()
 
     def get_all_resulting_recipes_from(self, persona):
@@ -76,6 +89,89 @@ class FusionCalculatorBlueprint:
                 recipe = {"sources": [persona, custom_persona], "result": result}
                 self.add_recipe(recipe, recipes, False)
         return recipes
+
+    def find_all_fusions_with_persona(self, target_persona_name):
+        self.get_personas_from_server()
+        self.setup_personas_by_arcana()
+        all_personas = self.persona_list
+
+        target_persona = next(
+            (
+                persona
+                for persona in all_personas
+                if persona["name"] == target_persona_name
+            ),
+            None,
+        )
+
+        if not target_persona:
+            return None
+
+        all_fusions = []
+        with ThreadPoolExecutor(max_workers=5) as executor:
+            futures = [
+                executor.submit(
+                    self.process_fusion,
+                    target_persona,
+                    target_persona_name,
+                    all_personas,
+                    custom_persona,
+                )
+                for custom_persona in all_personas
+            ]
+
+            for future in futures:
+                result = future.result()
+                if result:
+                    all_fusions.append(result)
+
+        return json.dumps(all_fusions)
+
+    def process_fusion(
+        self, target_persona, target_persona_name, all_personas, custom_persona
+    ):
+        result = self.__fuse(target_persona_name, custom_persona["name"], all_personas)
+        if result:
+            recipe = {
+                "sources": [target_persona, custom_persona],
+                "result": result,
+            }
+            return recipe
+
+    def __fuse(self, persona1_name: str, persona2_name: str, all_personas):
+        persona1 = next(
+            (persona for persona in all_personas if persona["name"] == persona1_name),
+            None,
+        )
+        persona2 = next(
+            (persona for persona in all_personas if persona["name"] == persona2_name),
+            None,
+        )
+
+        if persona1 is None or persona2 is None:
+            return None
+
+        result = self.get_special_fuse_result(persona1, persona2)
+        if result is not None:
+            return next(
+                (
+                    persona
+                    for persona in all_personas
+                    if persona["name"] == result["name"]
+                ),
+                None,
+            )
+
+        if (persona1["rare"] and not persona2["rare"]) or (
+            not persona1["rare"] and persona2["rare"]
+        ):
+            rare_persona = persona1 if persona1["rare"] else persona2
+            normal_persona = persona1 if not persona1["rare"] else persona2
+            result = self.fuse_rare(rare_persona, normal_persona)
+            return result
+
+        result = self.fuse_normal(persona1, persona2)
+        return result
 
     def get_special_fuse_result(self, persona1, persona2):
         special_2_combos = [
@@ -136,36 +232,40 @@ class FusionCalculatorBlueprint:
         return persona if found else None
 
     def fuse_rare(self, rare_persona, main_persona):
-        modifier = self.rare_combos[main_persona["arcana"]][
-            self.rare_personas.index(rare_persona["name"])
-        ]
-        personas = self.personas_by_arcana[main_persona["arcana"]]
-        main_persona_index = personas.index(main_persona)
-        new_persona = personas[main_persona_index + modifier]
+        arcana = main_persona["arcana"]
+        rare_persona_index = self.rare_personas.index(rare_persona["name"])
+        modifier = self.rare_combos[arcana][rare_persona_index]
+        personae = self.personas_by_arcana[arcana]
+        main_persona_index = personae.index(main_persona)
+        new_persona_index = main_persona_index + modifier
 
-        while new_persona and (new_persona["special"] or new_persona["rare"]):
-            if modifier > 0:
-                modifier += 1
-            elif modifier < 0:
-                modifier -= 1
+        if 0 <= new_persona_index < len(personae):
+            new_persona = personae[new_persona_index]
 
-            new_persona = personas[main_persona_index + modifier]
+            while new_persona and (new_persona["special"] or new_persona["rare"]):
+                if modifier > 0:
+                    modifier += 1
+                elif modifier < 0:
+                    modifier -= 1
 
-        return new_persona if new_persona else None
+                new_persona_index = main_persona_index + modifier
 
-    def get_special_recipe(self, persona):
-        if not persona["special"]:
-            raise ValueError("Persona is not special!")
-        all_recipe = []
-        for combo in self.special_combos:
-            if persona["name"] == combo["result"]:
-                recipe = {"sources": [], "result": self.persona_list[combo["result"]]}
-                for source in combo["sources"]:
-                    recipe["sources"].append(self.persona_list[source])
-                self.add_recipe(recipe, all_recipe, True)
-                return all_recipe
+                if 0 <= new_persona_index < len(personae):
+                    new_persona = personae[new_persona_index]
+                else:
+                    new_persona = None
 
-    def get_recipes(self, persona):
+            return new_persona
+
+        return None
+
+    def get_recipes(self, persona_name):
+        self.get_personas_from_server()
+        self.setup_personas_by_arcana()
+        persona = requests.get(
+            f"http://127.0.0.1:5000/personas/exact/{persona_name}"
+        ).json()
+
         all_recipe = []
 
         if persona["rare"]:
@@ -190,8 +290,26 @@ class FusionCalculatorBlueprint:
             and recipe["result"]["name"] == expected_result["name"]
         )
 
+    def get_special_recipe(self, persona):
+        if not persona["special"]:
+            raise ValueError("Persona is not special!")
+
+        persona_dict = {p["name"]: p for p in self.persona_list}
+
+        all_recipe = []
+        for combo in self.special_combos:
+            if persona["name"] == combo["result"]:
+                recipe = {"sources": [], "result": persona_dict[combo["result"]]}
+                for source in combo["sources"]:
+                    recipe["sources"].append(persona_dict[source])
+                self.add_recipe(recipe, all_recipe, True)
+                return all_recipe
+
     def get_arcana_recipes(self, arcana):
         recipes = []
+
+        persona_dict = {p["name"]: p for p in self.persona_list}
+
         arcana_combos = list(
             filter(lambda x: x["result"] == arcana, self.arcana_2_combos)
         )
@@ -212,14 +330,24 @@ class FusionCalculatorBlueprint:
                     if persona2["rare"] and not persona1["rare"]:
                         continue
 
-                    result = self.fuse_normal(persona1, persona2)
+                    result = self.fuse_normal(
+                        persona_dict[persona1["name"]], persona_dict[persona2["name"]]
+                    )
                     if not result:
                         continue
 
-                    recipes.append({"sources": [persona1, persona2], "result": result})
+                    recipes.append(
+                        {
+                            "sources": [
+                                persona_dict[persona1["name"]],
+                                persona_dict[persona2["name"]],
+                            ],
+                            "result": result,
+                        }
+                    )
 
         for i in range(len(self.rare_personas)):
-            rare_persona = self.persona_list[self.rare_personas[i]]
+            rare_persona = persona_dict[self.rare_personas[i]]
             personas = self.personas_by_arcana[arcana]
 
             for j in range(len(personas)):
@@ -227,12 +355,17 @@ class FusionCalculatorBlueprint:
                 if rare_persona == main_persona:
                     continue
 
-                result = self.fuse_rare(rare_persona, main_persona)
+                result = self.fuse_rare(
+                    rare_persona, persona_dict[main_persona["name"]]
+                )
                 if not result:
                     continue
 
                 recipes.append(
-                    {"sources": [rare_persona, main_persona], "result": result}
+                    {
+                        "sources": [rare_persona, persona_dict[main_persona["name"]]],
+                        "result": result,
+                    }
                 )
 
         return recipes
@@ -296,8 +429,6 @@ class FusionCalculatorBlueprint:
             print(f"Error decoding JSON: {e}")
             return {}
 
-    # TODO check this method
-    # review implementation
     def setup_personas_by_arcana(self):
         self.full_personas_by_arcana = {}
         for persona in self.persona_list:
