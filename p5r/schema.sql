@@ -8,7 +8,9 @@ CREATE TABLE Personas (
     itemr VARCHAR(255) NOT NULL,
     lvl INT NOT NULL,
     trait VARCHAR(255) NOT NULL,
-    arcana VARCHAR(255) NOT NULL
+    arcana VARCHAR(255) NOT NULL,
+    rare BOOLEAN NOT NULL,
+    special BOOLEAN NOT NULL
 );
 
 CREATE TABLE PersonaResistances (

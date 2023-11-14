@@ -35,11 +35,13 @@ def create_app(test_config=None):
 
     db.init_app(app)
 
-    from p5r.personas import persona_bp
-    from p5r.skills import skills_bp
+    from p5r.personas import PersonaBlueprint
+    from p5r.skills import SkillsBlueprint
+    from p5r.calculator.fusion import FusionCalculatorBlueprint
 
-    app.register_blueprint(persona_bp)
-    app.register_blueprint(skills_bp)
+    app.register_blueprint(PersonaBlueprint("pesonas", __name__).blueprint)
+    app.register_blueprint(SkillsBlueprint("skills", __name__).blueprint)
+    app.register_blueprint(FusionCalculatorBlueprint("calculator", __name__).blueprint)
 
     Swagger(app)
 
