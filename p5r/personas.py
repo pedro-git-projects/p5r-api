@@ -12,6 +12,9 @@ class PersonaBlueprint:
         self.blueprint.route("/personas", methods=["GET"])(self.get_all_personas)
         self.blueprint.route("/personas", methods=["POST"])(self.create_persona)
         self.blueprint.route("/personas/many", methods=["POST"])(self.create_personas)
+        self.blueprint.route("/personas/exact/<string:name>", methods=["GET"])(
+            self.get_persona_by_exact_name
+        )
         self.blueprint.route("/personas/<string:name>", methods=["GET"])(
             self.get_persona_by_name
         )
@@ -44,6 +47,8 @@ class PersonaBlueprint:
                 "lvl": persona[5],
                 "trait": persona[6],
                 "arcana": persona[7],
+                "rare": persona[8],
+                "special": persona[9],
                 "resists": self.__get_resists_for_persona(cursor, persona[0]),
                 "skills": self.__get_skills_for_persona(cursor, persona[0]),
                 "stats": self.__get_stats_for_persona(cursor, persona[0]),
@@ -76,6 +81,41 @@ class PersonaBlueprint:
             "lvl": persona[5],
             "trait": persona[6],
             "arcana": persona[7],
+            "rare": persona[8],
+            "special": persona[9],
+            "resists": self.__get_resists_for_persona(cursor, persona[0]),
+            "skills": self.__get_skills_for_persona(cursor, persona[0]),
+            "stats": self.__get_stats_for_persona(cursor, persona[0]),
+        }
+
+        cursor.close()
+
+        return jsonify(persona_dict)
+
+    def get_persona_by_exact_name(self, name: str):
+        db = get_db()
+        cursor = db.cursor()
+
+        cursor.execute(
+            "SELECT * FROM Personas WHERE lower(name) = lower(%s)",
+            (name,),
+        )
+        persona = cursor.fetchone()
+
+        if not persona:
+            return jsonify({"error": "Persona not found"}), 404
+
+        persona_dict = {
+            "id": persona[0],
+            "name": persona[1],
+            "inherits": persona[2],
+            "item": persona[3],
+            "itemr": persona[4],
+            "lvl": persona[5],
+            "trait": persona[6],
+            "arcana": persona[7],
+            "rare": persona[8],
+            "special": persona[9],
             "resists": self.__get_resists_for_persona(cursor, persona[0]),
             "skills": self.__get_skills_for_persona(cursor, persona[0]),
             "stats": self.__get_stats_for_persona(cursor, persona[0]),
@@ -141,12 +181,13 @@ class PersonaBlueprint:
             lvl = data["lvl"]
             trait = data["trait"]
             arcana = data["arcana"]
-
+            rare = data.get("rare", False)
+            special = data.get("special", False)
             cursor.execute(
                 """INSERT INTO Personas 
-                  (name, inherits, item, itemr, lvl, trait, arcana) 
-                  VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING id""",
-                (name, inherits, item, itemr, lvl, trait, arcana),
+                  (name, inherits, item, itemr, lvl, trait, arcana, rare, special) 
+                  VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING id""",
+                (name, inherits, item, itemr, lvl, trait, arcana, rare, special),
             )
 
             persona_id = 0
@@ -247,12 +288,14 @@ class PersonaBlueprint:
                 lvl = persona_data.get("lvl")
                 trait = persona_data.get("trait")
                 arcana = persona_data.get("arcana")
+                rare = persona_data.get("rare", False)
+                special = persona_data.get("special", False)
 
                 cursor.execute(
                     """INSERT INTO Personas 
-                  (name, inherits, item, itemr, lvl, trait, arcana) 
-                      VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING id""",
-                    (name, inherits, item, itemr, lvl, trait, arcana),
+                  (name, inherits, item, itemr, lvl, trait, arcana, rare, special) 
+                      VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING id""",
+                    (name, inherits, item, itemr, lvl, trait, arcana, rare, special),
                 )
 
                 persona_id = 0

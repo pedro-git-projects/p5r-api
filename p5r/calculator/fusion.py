@@ -1,4 +1,5 @@
-from .pdata import PERSONAS
+from flask import Blueprint, json
+from psycopg2 import Error
 from .data_maps import (
     SPECIAL_COMBOS,
     RARE_COMBOS,
@@ -6,24 +7,43 @@ from .data_maps import (
     ARCANA2_COMBOS,
     FUSION_CHART,
 )
+import requests
 
 
-class FusionCalculator:
-    def __init__(self, personas_by_arcana):
-        self.personas_by_arcana = personas_by_arcana
+class FusionCalculatorBlueprint:
+    def __init__(self, name: str, import_name: str):
+        self.blueprint = Blueprint(name, import_name)
+        self.personas_by_arcana = {}
+        self.persona_list = []
         self.chart = FUSION_CHART
-        self.persona_list = PERSONAS
         self.special_combos = SPECIAL_COMBOS
         self.rare_combos = RARE_COMBOS
         self.rare_personas = RARE_PERSONAS
         self.arcana_2_combos = ARCANA2_COMBOS
         self.arcana_map = {}
 
-    def fuse(self, persona1, persona2):
+        self.setup_routes()
+
+    def setup_routes(self):
+        self.blueprint.route(
+            "/calculator/<string:persona1_name>/<string:persona2_name>", methods=["GET"]
+        )(self.fuse)
+
+    def fuse(self, persona1_name: str, persona2_name: str):
+        self.get_personas_from_server()
+        self.setup_personas_by_arcana()
+        persona1 = requests.get(
+            f"http://127.0.0.1:5000/personas/exact/{persona1_name}"
+        ).json()
+        persona2 = requests.get(
+            f"http://127.0.0.1:5000/personas/exact/{persona2_name}"
+        ).json()
+
         result = self.get_special_fuse_result(persona1, persona2)
         if result is not None:
-            print(result["name"])
-            return result
+            return requests.get(
+                f"http://127.0.0.1:5000/personas/{result['name']}"
+            ).json()
 
         if (persona1["rare"] and not persona2["rare"]) or (
             not persona1["rare"] and persona2["rare"]
@@ -34,15 +54,19 @@ class FusionCalculator:
             if result is None:
                 pass
             else:
-                print(result["name"])
+                return requests.get(
+                    f"http://127.0.0.1:5000/personas/{result['name']}"
+                ).json()
+
             return result
 
         result = self.fuse_normal(persona1, persona2)
         if result is None:
             pass
         else:
-            print(result["name"])
-        return result
+            return requests.get(
+                f"http://127.0.0.1:5000/personas/{result['name']}"
+            ).json()
 
     def get_all_resulting_recipes_from(self, persona):
         recipes = []
@@ -247,6 +271,48 @@ class FusionCalculator:
         except KeyError:
             print(f"Arcana '{arcana1}' or '{arcana2}' not found in the arcana map.")
             return None
+
+    def get_personas_from_server(self):
+        try:
+            response = requests.get("http://127.0.0.1:5000/personas")
+
+            if response.status_code == 200:
+                personas = response.json()
+                self.persona_list = personas
+
+                return personas
+            else:
+                print(f"Failed to fetch personas. Status code: {response.status_code}")
+                return []
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return []
+
+    def convert_json_to_dict(self, json_data):
+        try:
+            persona_dict = json.loads(json_data)
+            return persona_dict
+        except Error as e:
+            print(f"Error decoding JSON: {e}")
+            return {}
+
+    # TODO check this method
+    # review implementation
+    def setup_personas_by_arcana(self):
+        self.full_personas_by_arcana = {}
+        for persona in self.persona_list:
+            arcana = persona["arcana"]
+
+            if arcana not in self.full_personas_by_arcana:
+                self.full_personas_by_arcana[arcana] = []
+                self.personas_by_arcana[arcana] = []
+
+            self.full_personas_by_arcana[arcana].append(persona)
+            self.personas_by_arcana[arcana].append(persona)
+
+        for key in self.full_personas_by_arcana:
+            self.full_personas_by_arcana[key].sort(key=lambda x: x["lvl"])
+            self.personas_by_arcana[key].sort(key=lambda x: x["lvl"])
 
 
 class Recipe:
