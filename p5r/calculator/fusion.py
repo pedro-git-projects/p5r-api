@@ -43,6 +43,111 @@ class FusionCalculatorBlueprint:
         )
 
     def fuse(self, persona1_name: str, persona2_name: str):
+        """
+        Fuse two personas to create a new one
+        ---
+        tags:
+          - Fusion
+        parameters:
+          - in: path
+            name: persona1_name
+            type: string
+            description: The name of the first persona to fuse.
+            required: true
+          - in: path
+            name: persona2_name
+            type: string
+            description: The name of the second persona to fuse.
+            required: true
+        responses:
+          200:
+            description: The fused persona
+            schema:
+              type: object
+              properties:
+                arcana:
+                  type: string
+                  description: The arcana of the fused persona.
+                id:
+                  type: integer
+                  description: The unique identifier for the fused persona.
+                inherits:
+                  type: string
+                  description: The inherited type of the fused persona.
+                item:
+                  type: string
+                  description: The item associated with the fused persona.
+                itemr:
+                  type: string
+                  description: The rare item associated with the fused persona.
+                lvl:
+                  type: integer
+                  description: The level of the fused persona.
+                name:
+                  type: string
+                  description: The name of the fused persona.
+                rare:
+                  type: boolean
+                  description: Indicates whether the fused persona is rare.
+                resists:
+                  type: object
+                  description: Resistances of the fused persona.
+                skills:
+                  type: object
+                  description: Skills of the fused persona.
+                special:
+                  type: boolean
+                  description: Indicates whether the fused persona is special.
+                stats:
+                  type: object
+                  description: Stats of the fused persona.
+                trait:
+                  type: string
+                  description: The trait of the fused persona.
+            example:
+              arcana: "Lovers"
+              id: 150
+              inherits: "elec"
+              item: "Static Ring"
+              itemr: "Spiral Static Ring"
+              lvl: 2
+              name: "Pixie"
+              rare: false
+              resists:
+                bless: "s"
+                curse: "w"
+                elec: "s"
+                fire: "-"
+                gun: "w"
+                ice: "w"
+                nuke: "-"
+                phys: "-"
+                pys: "-"
+                wind: "-"
+              skills:
+                Dia: 0
+                Patra: 3
+                Resist Confuse: 5
+                Tarukaja: 4
+                Zio: 0
+              special: false
+              stats:
+                ag: 4
+                en: 3
+                lu: 2
+                ma: 3
+                st: 1
+              trait: "Static Electricity"
+          404:
+            description: Persona not found. One or both of the specified personas do not exist.
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating that one or both of the specified personas do not exist.
+        """  # noqa: E501
+
         self.get_personas_from_server()
         self.setup_personas_by_arcana()
         persona1 = requests.get(
@@ -91,6 +196,231 @@ class FusionCalculatorBlueprint:
         return recipes
 
     def find_all_fusions_with_persona(self, target_persona_name):
+        """
+        Find all possible fusions involving a target persona.
+        ---
+        tags:
+          - Fusion
+        parameters:
+          - in: path
+            name: target_persona_name
+            type: string
+            description: The name of the target persona.
+            required: true
+        responses:
+          200:
+            description: An array of fusion results, each containing the resulting persona and the sources used for fusion.
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    description: The resulting fused persona.
+                    properties:
+                      arcana:
+                        type: string
+                        description: The arcana of the fused persona.
+                      id:
+                        type: integer
+                        description: The unique identifier for the fused persona.
+                      inherits:
+                        type: string
+                        description: The inherited type of the fused persona.
+                      item:
+                        type: string
+                        description: The item associated with the fused persona.
+                      itemr:
+                        type: string
+                        description: The rare item associated with the fused persona.
+                      lvl:
+                        type: integer
+                        description: The level of the fused persona.
+                      name:
+                        type: string
+                        description: The name of the fused persona.
+                      rare:
+                        type: boolean
+                        description: Indicates whether the fused persona is rare.
+                      resists:
+                        type: object
+                        description: Resistances of the fused persona.
+                      skills:
+                        type: object
+                        description: Skills of the fused persona.
+                      special:
+                        type: boolean
+                        description: Indicates whether the fused persona is special.
+                      stats:
+                        type: object
+                        description: Stats of the fused persona.
+                      trait:
+                        type: string
+                        description: The trait of the fused persona.
+                  sources:
+                    type: array
+                    description: An array of personas used as sources for fusion.
+                    items:
+                      type: object
+                      properties:
+                        arcana:
+                          type: string
+                          description: The arcana of the source persona.
+                        id:
+                          type: integer
+                          description: The unique identifier for the source persona.
+                        inherits:
+                          type: string
+                          description: The inherited type of the source persona.
+                        item:
+                          type: string
+                          description: The item associated with the source persona.
+                        itemr:
+                          type: string
+                          description: The rare item associated with the source persona.
+                        lvl:
+                          type: integer
+                          description: The level of the source persona.
+                        name:
+                          type: string
+                          description: The name of the source persona.
+                        rare:
+                          type: boolean
+                          description: Indicates whether the source persona is rare.
+                        resists:
+                          type: object
+                          description: Resistances of the source persona.
+                        skills:
+                          type: object
+                          description: Skills of the source persona.
+                        special:
+                          type: boolean
+                          description: Indicates whether the source persona is special.
+                        stats:
+                          type: object
+                          description: Stats of the source persona.
+                        trait:
+                          type: string
+                          description: The trait of the source persona.
+            example:
+              - result:
+                  arcana: "Moon"
+                  id: 104
+                  inherits: "almighty"
+                  item: "Null Nuke"
+                  itemr: "Repel Nuke"
+                  lvl: 60
+                  name: "Lilith"
+                  rare: false
+                  resists:
+                    bless: "-"
+                    curse: "n"
+                    elec: "-"
+                    fire: "w"
+                    gun: "-"
+                    ice: "r"
+                    nuke: "r"
+                    phys: "-"
+                    pys: "-"
+                    wind: "-"
+                  skills:
+                    Freeze Boost: 64
+                    Freidyne: 0
+                    Mabufudyne: 0
+                    Mafreidyne: 62
+                    Makarakarn: 0
+                    Nuke Amp: 65
+                    Spirit Drain: 63
+                  special: false
+                  stats:
+                    ag: 39
+                    en: 37
+                    lu: 35
+                    ma: 43
+                    st: 33
+                  trait: "Mighty Gaze"
+                sources:
+                  - arcana: "Fool"
+                    id: 167
+                    inherits: "almighty"
+                    item: "Paradise Lost"
+                    itemr: "Paradise Lost R"
+                    lvl: 95
+                    name: "Satanael"
+                    rare: false
+                    resists:
+                      bless: "n"
+                      curse: "d"
+                      elec: "s"
+                      fire: "s"
+                      gun: "s"
+                      ice: "s"
+                      nuke: "s"
+                      phys: "s"
+                      pys: "s"
+                      wind: "s"
+                    skills:
+                      Black Viper: 96
+                      Heat Riser: 97
+                      Maeigaon: 0
+                      Megidolaon: 0
+                      Riot Gun: 0
+                      Survival Trick: 0
+                      Tyrant's Mind: 98
+                      Victory Cry: 99
+                    special: false
+                    stats:
+                      ag: 56
+                      en: 57
+                      lu: 56
+                      ma: 60
+                      st: 63
+                    trait: "Pagan Allure"
+                  - arcana: "Chariot"
+                    id: 2
+                    inherits: "elec"
+                    item: "Zio"
+                    itemr: "Mazio"
+                    lvl: 3
+                    name: "Agathion"
+                    rare: false
+                    resists:
+                      bless: "-"
+                      curse: "-"
+                      elec: "s"
+                      fire: "-"
+                      gun: "s"
+                      ice: "-"
+                      nuke: "-"
+                      phys: "-"
+                      pys: "-"
+                      wind: "w"
+                    skills:
+                      Baisudi: 0
+                      Dia: 0
+                      Dodge Elec: 8
+                      Lunge: 4
+                      Rakukaja: 6
+                      Zio: 7
+                    special: false
+                    stats:
+                      ag: 7
+                      en: 5
+                      lu: 3
+                      ma: 4
+                      st: 3
+                    trait: "Rare Antibody"
+        404:
+          description: Persona not found. The specified target persona does not exist.
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Error message indicating that the specified target persona does not exist.
+        """  # noqa: E501
+
         self.get_personas_from_server()
         self.setup_personas_by_arcana()
         all_personas = self.persona_list
@@ -260,6 +590,241 @@ class FusionCalculatorBlueprint:
         return None
 
     def get_recipes(self, persona_name):
+        """
+        Get fusion recipes for a given persona.
+        ---
+        tags:
+          - Fusion
+        parameters:
+          - in: path
+            name: persona_name
+            type: string
+            description: The name of the persona for which to retrieve fusion recipes.
+            required: true
+        responses:
+          200:
+            description: An array of fusion recipes, each containing the resulting persona, cost, and sources used for fusion.
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  cost:
+                    type: integer
+                    description: The fusion cost.
+                  is_all_rare:
+                    type: boolean
+                    description: Indicates whether all personas involved in the fusion are rare.
+                  result:
+                    type: object
+                    description: The resulting fused persona.
+                    properties:
+                      arcana:
+                        type: string
+                        description: The arcana of the fused persona.
+                      id:
+                        type: integer
+                        description: The unique identifier for the fused persona.
+                      inherits:
+                        type: string
+                        description: The inherited type of the fused persona.
+                      item:
+                        type: string
+                        description: The item associated with the fused persona.
+                      itemr:
+                        type: string
+                        description: The rare item associated with the fused persona.
+                      lvl:
+                        type: integer
+                        description: The level of the fused persona.
+                      name:
+                        type: string
+                        description: The name of the fused persona.
+                      rare:
+                        type: boolean
+                        description: Indicates whether the fused persona is rare.
+                      resists:
+                        type: object
+                        description: Resistances of the fused persona.
+                      skills:
+                        type: object
+                        description: Skills of the fused persona.
+                      special:
+                        type: boolean
+                        description: Indicates whether the fused persona is special.
+                      stats:
+                        type: object
+                        description: Stats of the fused persona.
+                      trait:
+                        type: string
+                        description: The trait of the fused persona.
+                  sources:
+                    type: array
+                    description: An array of personas used as sources for fusion.
+                    items:
+                      type: object
+                      properties:
+                        arcana:
+                          type: string
+                          description: The arcana of the source persona.
+                        id:
+                          type: integer
+                          description: The unique identifier for the source persona.
+                        inherits:
+                          type: string
+                          description: The inherited type of the source persona.
+                        item:
+                          type: string
+                          description: The item associated with the source persona.
+                        itemr:
+                          type: string
+                          description: The rare item associated with the source persona.
+                        lvl:
+                          type: integer
+                          description: The level of the source persona.
+                        name:
+                          type: string
+                          description: The name of the source persona.
+                        rare:
+                          type: boolean
+                          description: Indicates whether the source persona is rare.
+                        resists:
+                          type: object
+                          description: Resistances of the source persona.
+                        skills:
+                          type: object
+                          description: Skills of the source persona.
+                        special:
+                          type: boolean
+                          description: Indicates whether the source persona is special.
+                        stats:
+                          type: object
+                          description: Stats of the source persona.
+                        trait:
+                          type: string
+                          description: The trait of the source persona.
+            example:
+              - cost: 397702
+                is_all_rare: false
+                result:
+                  arcana: "Fool"
+                  id: 167
+                  inherits: "almighty"
+                  item: "Paradise Lost"
+                  itemr: "Paradise Lost R"
+                  lvl: 95
+                  name: "Satanael"
+                  rare: false
+                  resists:
+                    bless: "n"
+                    curse: "d"
+                    elec: "s"
+                    fire: "s"
+                    gun: "s"
+                    ice: "s"
+                    nuke: "s"
+                    phys: "s"
+                    pys: "s"
+                    wind: "s"
+                  skills:
+                    Black Viper: 96
+                    Heat Riser: 97
+                    Maeigaon: 0
+                    Megidolaon: 0
+                    Riot Gun: 0
+                    Survival Trick: 0
+                    Tyrant's Mind: 98
+                    Victory Cry: 99
+                  special: false
+                  stats:
+                    ag: 56
+                    en: 57
+                    lu: 56
+                    ma: 60
+                    st: 63
+                  trait: "Pagan Allure"
+                sources:
+                  - arcana: "Magician"
+                    id: 57
+                    inherits: "phys"
+                    item: "Hinokagutsuchi"
+                    itemr: "Hinokagutsuchi II"
+                    lvl: 86
+                    name: "Futsunushi"
+                    rare: false
+                    resists:
+                      bless: "-"
+                      curse: "-"
+                      elec: "-"
+                      fire: "-"
+                      gun: "-"
+                      ice: "-"
+                      nuke: "w"
+                      phys: "s"
+                      pys: "-"
+                      wind: "-"
+                    skills:
+                      Apt Pupil: 0
+                      Auto-Maraku: 92
+                      Brave Blade: 89
+                      Charge: 88
+                      Firm Stance: 91
+                      Matarukaja: 0
+                      Myriad Slashes: 0
+                      Regenerate 3: 90
+                    special: false
+                    stats:
+                      ag: 52
+                      en: 55
+                      lu: 40
+                      ma: 58
+                      st: 60
+                    trait: "Will of the Sword"
+                  - arcana: "Strength"
+                    id: 206
+                    inherits: "fire"
+                    item: "God's Hand Belt"
+                    itemr: "Gigantomachia Belt"
+                    lvl: 80
+                    name: "Zaou-Gongen"
+                    rare: false
+                    resists:
+                      bless: "n"
+                      curse: "n"
+                      elec: "w"
+                      fire: "r"
+                      gun: "-"
+                      ice: "-"
+                      nuke: "-"
+                      phys: "-"
+                      pys: "-"
+                      wind: "-"
+                    skills:
+                      Abysmal Surge: 0
+                      Blazing Hell: 86
+                      Enduring Soul: 83
+                      Evade Phys: 82
+                      God's Hand: 0
+                      Gun Amp: 84
+                      Maragidyne: 0
+                    special: false
+                    stats:
+                      ag: 56
+                      en: 50
+                      lu: 39
+                      ma: 45
+                      st: 57
+                    trait: "Undying Fury"
+          404:
+            description: Persona not found. The specified persona does not exist.
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating that the specified persona does not exist.
+        """  # noqa: E501
+
         self.get_personas_from_server()
         self.setup_personas_by_arcana()
         persona = requests.get(
