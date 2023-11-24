@@ -47,7 +47,7 @@ CREATE TABLE PersonaStats (
 
 CREATE TABLE Skills (
     id SERIAL PRIMARY KEY,
-    element VARCHAR(255) NOT NULL,
+    element VARCHAR(5) NOT NULL,
     name VARCHAR(255) NOT NULL UNIQUE,
     cost INT NOT NULL,
     effect VARCHAR(255) NOT NULL,
