@@ -1,0 +1,2648 @@
+[
+  {
+    "element": "pas",
+    "name": "Absorb Bless",
+    "cost": 0,
+    "effect": "Absorbs Bless dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Absorb Curse",
+    "cost": 0,
+    "effect": "Absorbs Curse dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Absorb Elec",
+    "cost": 0,
+    "effect": "Absorbs Elec dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Absorb Fire",
+    "cost": 0,
+    "effect": "Absorbs Fire dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Absorb Ice",
+    "cost": 0,
+    "effect": "Absorbs Ice dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Absorb Nuke",
+    "cost": 0,
+    "effect": "Absorbs Nuke dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Absorb Phys",
+    "cost": 0,
+    "effect": "Absorbs Phys dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Absorb Psy",
+    "cost": 0,
+    "effect": "Absorbs Psy dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Absorb Wind",
+    "cost": 0,
+    "effect": "Absorbs Wind dmg",
+    "target": "Self"
+  },
+  {
+    "element": "ail",
+    "name": "Abysmal Surge",
+    "cost": 1012,
+    "effect": "70% Despair",
+    "target": "All foes"
+  },
+  {
+    "element": "dar",
+    "name": "Abyssal Wings",
+    "cost": 1030,
+    "effect": "210 power",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Active Support",
+    "cost": 0,
+    "effect": "Moral Support may now Charge or recover SP",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Adverse Resolve",
+    "cost": 0,
+    "effect": "Crit rate x1.2 when ambushed",
+    "target": "Self"
+  },
+  {
+    "element": "fir",
+    "name": "Agi",
+    "cost": 1004,
+    "effect": "40 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "fir",
+    "name": "Agidyne",
+    "cost": 1012,
+    "effect": "160 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "fir",
+    "name": "Agilao",
+    "cost": 1008,
+    "effect": "100 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "phy",
+    "name": "Agneyastra",
+    "cost": 24,
+    "effect": "110 power, 1-3 hits",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Ailment Boost",
+    "cost": 0,
+    "effect": "Ailment affliction rate x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Ali Dance",
+    "cost": 0,
+    "effect": "Halves hit rate of all incoming dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Almighty Amp",
+    "cost": 0,
+    "effect": "Almighty dmg x1.5",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Almighty Boost",
+    "cost": 0,
+    "effect": "Almighty dmg x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Ambient Aid",
+    "cost": 0,
+    "effect": "Ailment affliction rate x1.3 under special weather conditions",
+    "target": "Self"
+  },
+  {
+    "element": "rec",
+    "name": "Amrita Drop",
+    "cost": 1006,
+    "effect": "Cure non-unique ailments",
+    "target": "1 ally"
+  },
+  {
+    "element": "rec",
+    "name": "Amrita Shower",
+    "cost": 1012,
+    "effect": "Cure non-unique ailments",
+    "target": "All allies"
+  },
+  {
+    "element": "pas",
+    "name": "Analysis",
+    "cost": 0,
+    "effect": "Displays resistances discovered through previous attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Angelic Grace",
+    "cost": 0,
+    "effect": "Doubles evasion against non-Almighty magic dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Apt Pupil",
+    "cost": 0,
+    "effect": "Doubles crit rate",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Arms Master",
+    "cost": 0,
+    "effect": "Halves HP skill costs",
+    "target": "Self"
+  },
+  {
+    "element": "phy",
+    "name": "Assault Dive",
+    "cost": 13,
+    "effect": "130 power, 20% crit",
+    "target": "1 foe"
+  },
+  {
+    "element": "nuk",
+    "name": "Atomic Flare",
+    "cost": 1048,
+    "effect": "200 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Attack Master",
+    "cost": 0,
+    "effect": "Begin battle with Tarukaja",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Auto-Maraku",
+    "cost": 0,
+    "effect": "Begin battle with Marakukaja",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Auto-Masuku",
+    "cost": 0,
+    "effect": "Begin battle with Masukukaja",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Auto-Mataru",
+    "cost": 0,
+    "effect": "Begin battle with Matarukaja",
+    "target": "Self"
+  },
+  {
+    "element": "phy",
+    "name": "Ayamur",
+    "cost": 25,
+    "effect": "100 power, 3 hits, 99% hit",
+    "target": "1 foe"
+  },
+  {
+    "element": "phy",
+    "name": "Bad Beat",
+    "cost": 21,
+    "effect": "110 power, 50% Despair",
+    "target": "All foes"
+  },
+  {
+    "element": "rec",
+    "name": "Baisudi",
+    "cost": 1004,
+    "effect": "Cure Burn, Freeze, Shock",
+    "target": "1 ally"
+  },
+  {
+    "element": "phy",
+    "name": "Beast Weaver",
+    "cost": 20,
+    "effect": "1200 power, 20% crit, Halves attack for remainder of battle for each use",
+    "target": "1 foe"
+  },
+  {
+    "element": "alm",
+    "name": "Black Viper",
+    "cost": 1048,
+    "effect": "240 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "fir",
+    "name": "Blazing Hell",
+    "cost": 1054,
+    "effect": "180 power",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Bless Amp",
+    "cost": 0,
+    "effect": "Bless dmg x1.5",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Bless Boost",
+    "cost": 0,
+    "effect": "Bless dmg x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "phy",
+    "name": "Bloodbath",
+    "cost": 19,
+    "effect": "120 power, 50% Fear",
+    "target": "All foes"
+  },
+  {
+    "element": "phy",
+    "name": "Brain Buster",
+    "cost": 21,
+    "effect": "120 power, 50% Brainwash",
+    "target": "All foes"
+  },
+  {
+    "element": "ail",
+    "name": "Brain Jack",
+    "cost": 1012,
+    "effect": "70% Brainwash",
+    "target": "All foes"
+  },
+  {
+    "element": "phy",
+    "name": "Brain Shake",
+    "cost": 9,
+    "effect": "80 power, 70% Brainwash",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Brainwash Boost",
+    "cost": 0,
+    "effect": "Brainwash affliction rate x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "phy",
+    "name": "Brave Blade",
+    "cost": 24,
+    "effect": "600 power, 35% crit",
+    "target": "1 foe"
+  },
+  {
+    "element": "ice",
+    "name": "Bufu",
+    "cost": 1004,
+    "effect": "40 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "ice",
+    "name": "Bufudyne",
+    "cost": 1012,
+    "effect": "160 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "ice",
+    "name": "Bufula",
+    "cost": 1008,
+    "effect": "100 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Burn Boost",
+    "cost": 0,
+    "effect": "Burn affliction rate x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "rec",
+    "name": "Cadenza",
+    "cost": 1024,
+    "effect": "50% HP restore, Masukukaja",
+    "target": "All allies"
+  },
+  {
+    "element": "sup",
+    "name": "Charge",
+    "cost": 1015,
+    "effect": "Multiply next phys/gun attack by 2.5",
+    "target": "Self"
+  },
+  {
+    "element": "phy",
+    "name": "Cleave",
+    "cost": 6,
+    "effect": "65 power, 20% crit",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Climate Decorum",
+    "cost": 0,
+    "effect": "Doubles evasion under special weather conditions",
+    "target": "Self"
+  },
+  {
+    "element": "sup",
+    "name": "Concentrate",
+    "cost": 1015,
+    "effect": "Multiply next magic attack by 2.5",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Confuse Boost",
+    "cost": 0,
+    "effect": "Confuse affliction rate x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "phy",
+    "name": "Cornered Fang",
+    "cost": 10,
+    "effect": "100 power, 35% crit, Dmg x1.5 when ambushed",
+    "target": "1 foe"
+  },
+  {
+    "element": "nuk",
+    "name": "Cosmic Flare",
+    "cost": 1054,
+    "effect": "180 power",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Counter",
+    "cost": 0,
+    "effect": "10% chance of reflecting phys/gun attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Counterstrike",
+    "cost": 0,
+    "effect": "15% chance of reflecting phys/gun attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Cripple",
+    "cost": 0,
+    "effect": "Gun dmg x1.5",
+    "target": "Self"
+  },
+  {
+    "element": "phy",
+    "name": "Cross Slash",
+    "cost": 20,
+    "effect": "160 power, 2 hits, 20% crit, 99% hit",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Curse Amp",
+    "cost": 0,
+    "effect": "Curse dmg x1.5",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Curse Boost",
+    "cost": 0,
+    "effect": "Curse dmg x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "ail",
+    "name": "Dazzler",
+    "cost": 1005,
+    "effect": "90% Dizzy",
+    "target": "1 foe"
+  },
+  {
+    "element": "phy",
+    "name": "Deadly Fury",
+    "cost": 18,
+    "effect": "220 power, Dmg x1.5 after Baton Pass",
+    "target": "1 foe"
+  },
+  {
+    "element": "phy",
+    "name": "Deathbound",
+    "cost": 22,
+    "effect": "100 power, 1-2 hits",
+    "target": "All foes"
+  },
+  {
+    "element": "sup",
+    "name": "Debilitate",
+    "cost": 1030,
+    "effect": "Tarunda + Rakunda + Sukunda",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Defense Master",
+    "cost": 0,
+    "effect": "Begin battle with Rakukaja",
+    "target": "Self"
+  },
+  {
+    "element": "sup",
+    "name": "Dekaja",
+    "cost": 1010,
+    "effect": "Negate all -kaja effects",
+    "target": "All foes"
+  },
+  {
+    "element": "sup",
+    "name": "Dekunda",
+    "cost": 1010,
+    "effect": "Negate all -kunda effects",
+    "target": "All allies"
+  },
+  {
+    "element": "dar",
+    "name": "Demonic Decree",
+    "cost": 1048,
+    "effect": "Halve remaining HP",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Despair Boost",
+    "cost": 0,
+    "effect": "Despair affliction rate x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "rec",
+    "name": "Dia",
+    "cost": 1003,
+    "effect": "50 power HP restore",
+    "target": "1 ally"
+  },
+  {
+    "element": "ice",
+    "name": "Diamond Dust",
+    "cost": 1048,
+    "effect": "200 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "rec",
+    "name": "Diarahan",
+    "cost": 1018,
+    "effect": "Full HP restore",
+    "target": "1 ally"
+  },
+  {
+    "element": "rec",
+    "name": "Diarama",
+    "cost": 1006,
+    "effect": "160 power HP restore",
+    "target": "1 ally"
+  },
+  {
+    "element": "dar",
+    "name": "Die For Me!",
+    "cost": 1044,
+    "effect": "70% instakill",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Divine Grace",
+    "cost": 0,
+    "effect": "HP recovery skills x1.5",
+    "target": "Self"
+  },
+  {
+    "element": "lig",
+    "name": "Divine Judgement",
+    "cost": 1048,
+    "effect": "Halve remaining HP",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Dizzy Boost",
+    "cost": 0,
+    "effect": "Dizzy affliction rate x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Dodge Bless",
+    "cost": 0,
+    "effect": "Doubles evasion against Bless dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Dodge Curse",
+    "cost": 0,
+    "effect": "Doubles evasion against Curse dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Dodge Elec",
+    "cost": 0,
+    "effect": "Doubles evasion against Elec dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Dodge Fire",
+    "cost": 0,
+    "effect": "Doubles evasion against Fire dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Dodge Ice",
+    "cost": 0,
+    "effect": "Doubles evasion against Ice dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Dodge Nuke",
+    "cost": 0,
+    "effect": "Doubles evasion against Nuke dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Dodge Phys",
+    "cost": 0,
+    "effect": "Doubles evasion against Phys dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Dodge Psy",
+    "cost": 0,
+    "effect": "Doubles evasion against Psy dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Dodge Wind",
+    "cost": 0,
+    "effect": "Doubles evasion against Wind dmg",
+    "target": "Self"
+  },
+  {
+    "element": "alm",
+    "name": "Door of Hades",
+    "cost": 1032,
+    "effect": "160 power, Mamudoon",
+    "target": "All foes"
+  },
+  {
+    "element": "phy",
+    "name": "Dormin Rush",
+    "cost": 16,
+    "effect": "80 power, 50% Sleep",
+    "target": "All foes"
+  },
+  {
+    "element": "ail",
+    "name": "Dormina",
+    "cost": 1005,
+    "effect": "90% Sleep",
+    "target": "1 foe"
+  },
+  {
+    "element": "phy",
+    "name": "Double Fangs",
+    "cost": 10,
+    "effect": "40 power, 2 hits",
+    "target": "1 foe"
+  },
+  {
+    "element": "phy",
+    "name": "Dream Needle",
+    "cost": 8,
+    "effect": "70 power, 70% Sleep",
+    "target": "1 foe"
+  },
+  {
+    "element": "dar",
+    "name": "Eiga",
+    "cost": 1008,
+    "effect": "120 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "dar",
+    "name": "Eigaon",
+    "cost": 1012,
+    "effect": "190 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "dar",
+    "name": "Eiha",
+    "cost": 1004,
+    "effect": "50 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Elec Amp",
+    "cost": 0,
+    "effect": "Elec dmg x1.5",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Elec Boost",
+    "cost": 0,
+    "effect": "Elec dmg x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "sup",
+    "name": "Elec Break",
+    "cost": 1015,
+    "effect": "Set Elec resistance to neutral for 3 turns",
+    "target": "All foes"
+  },
+  {
+    "element": "sup",
+    "name": "Elec Wall",
+    "cost": 1018,
+    "effect": "Set Elec resistance to resists for 3 turns",
+    "target": "1 ally"
+  },
+  {
+    "element": "pas",
+    "name": "Emergency Shift",
+    "cost": 0,
+    "effect": "Chance to swap current party with backups when 2 or more people are KO'd",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Endure",
+    "cost": 0,
+    "effect": "Survive 1 fatal blow with 1 HP per battle",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Enduring Soul",
+    "cost": 0,
+    "effect": "Survive 1 fatal blow with full HP per battle",
+    "target": "Self"
+  },
+  {
+    "element": "rec",
+    "name": "Energy Drop",
+    "cost": 1004,
+    "effect": "Cure Confuse, Fear, Despair, Rage, Brainwash",
+    "target": "1 ally"
+  },
+  {
+    "element": "rec",
+    "name": "Energy Shower",
+    "cost": 1008,
+    "effect": "Cure Confuse, Fear, Despair, Rage, Brainwash",
+    "target": "All allies"
+  },
+  {
+    "element": "pas",
+    "name": "Evade Bless",
+    "cost": 0,
+    "effect": "Triples evasion against Bless dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Evade Curse",
+    "cost": 0,
+    "effect": "Triples evasion against Curse dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Evade Elec",
+    "cost": 0,
+    "effect": "Triples evasion against Elec dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Evade Fire",
+    "cost": 0,
+    "effect": "Triples evasion against Fire dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Evade Ice",
+    "cost": 0,
+    "effect": "Triples evasion against Ice dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Evade Nuke",
+    "cost": 0,
+    "effect": "Triples evasion against Nuke dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Evade Phys",
+    "cost": 0,
+    "effect": "Triples evasion against Phys dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Evade Psy",
+    "cost": 0,
+    "effect": "Triples evasion against Psy dmg",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Evade Wind",
+    "cost": 0,
+    "effect": "Triples evasion against Wind dmg",
+    "target": "Self"
+  },
+  {
+    "element": "ail",
+    "name": "Evil Smile",
+    "cost": 1012,
+    "effect": "70% Fear",
+    "target": "All foes"
+  },
+  {
+    "element": "ail",
+    "name": "Evil Touch",
+    "cost": 1005,
+    "effect": "90% Fear",
+    "target": "1 foe"
+  },
+  {
+    "element": "ail",
+    "name": "Famine's Scream",
+    "cost": 0,
+    "effect": "Hunger",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Fast Heal",
+    "cost": 0,
+    "effect": "Doubles rate of recovery from ailments",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Fear Boost",
+    "cost": 0,
+    "effect": "Fear affliction rate x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Final Guard",
+    "cost": 0,
+    "effect": "Chance to nullify a fatal attack to a current party member",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Fire Amp",
+    "cost": 0,
+    "effect": "Fire dmg x1.5",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Fire Boost",
+    "cost": 0,
+    "effect": "Fire dmg x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "sup",
+    "name": "Fire Break",
+    "cost": 1015,
+    "effect": "Set Fire resistance to neutral for 3 turns",
+    "target": "All foes"
+  },
+  {
+    "element": "sup",
+    "name": "Fire Wall",
+    "cost": 1018,
+    "effect": "Set Fire resistance to resists for 3 turns",
+    "target": "1 ally"
+  },
+  {
+    "element": "pas",
+    "name": "Firm Stance",
+    "cost": 0,
+    "effect": "Halves incoming dmg but cannot evade",
+    "target": "Self"
+  },
+  {
+    "element": "phy",
+    "name": "Flash Bomb",
+    "cost": 19,
+    "effect": "100 power, 50% Dizzy",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Forget Boost",
+    "cost": 0,
+    "effect": "Forget affliction rate x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Fortified Moxy",
+    "cost": 0,
+    "effect": "Crit rate x1.15 when ambushing foe",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Fortify Spirit",
+    "cost": 0,
+    "effect": "Halves susceptibility to non-unique ailments",
+    "target": "Self"
+  },
+  {
+    "element": "alm",
+    "name": "Foul Breath",
+    "cost": 1008,
+    "effect": "Increase susceptibility to all ailments",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Freeze Boost",
+    "cost": 0,
+    "effect": "Freeze affliction rate x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "nuk",
+    "name": "Frei",
+    "cost": 1004,
+    "effect": "40 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "nuk",
+    "name": "Freidyne",
+    "cost": 1012,
+    "effect": "160 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "nuk",
+    "name": "Freila",
+    "cost": 1008,
+    "effect": "100 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "win",
+    "name": "Garu",
+    "cost": 1003,
+    "effect": "40 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "win",
+    "name": "Garudyne",
+    "cost": 1010,
+    "effect": "160 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "win",
+    "name": "Garula",
+    "cost": 1006,
+    "effect": "100 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "alm",
+    "name": "Ghastly Wail",
+    "cost": 1028,
+    "effect": "Instakill to all foes under Fear",
+    "target": "All foes"
+  },
+  {
+    "element": "phy",
+    "name": "Giant Slice",
+    "cost": 9,
+    "effect": "90 power, Dmg x1.5 after Baton Pass",
+    "target": "1 foe"
+  },
+  {
+    "element": "phy",
+    "name": "Gigantomachia",
+    "cost": 25,
+    "effect": "350 power",
+    "target": "All foes"
+  },
+  {
+    "element": "phy",
+    "name": "God's Hand",
+    "cost": 25,
+    "effect": "800 power, 15% crit",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Growth 1",
+    "cost": 0,
+    "effect": "Gains 25% EXP while in stock",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Growth 2",
+    "cost": 0,
+    "effect": "Gains 50% EXP while in stock",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Growth 3",
+    "cost": 0,
+    "effect": "Gains full EXP while in stock",
+    "target": "Self"
+  },
+  {
+    "element": "lig",
+    "name": "Hama",
+    "cost": 1008,
+    "effect": "30% instakill",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Hama Boost",
+    "cost": 0,
+    "effect": "Bless instakill affliction rate x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "lig",
+    "name": "Hamaon",
+    "cost": 1015,
+    "effect": "60% instakill",
+    "target": "1 foe"
+  },
+  {
+    "element": "phy",
+    "name": "Hassou Tobi",
+    "cost": 25,
+    "effect": "40 power, 8 hits, 75% hit",
+    "target": "All foes"
+  },
+  {
+    "element": "phy",
+    "name": "Headbutt",
+    "cost": 9,
+    "effect": "80 power, 70% Forget",
+    "target": "1 foe"
+  },
+  {
+    "element": "sup",
+    "name": "Heat Riser",
+    "cost": 1030,
+    "effect": "Tarukaja + Rakukaja + Sukukaja",
+    "target": "1 ally"
+  },
+  {
+    "element": "pas",
+    "name": "Heat Up",
+    "cost": 0,
+    "effect": "Restores 5% HP and 10 SP when ambushing foe",
+    "target": "Self"
+  },
+  {
+    "element": "phy",
+    "name": "Heat Wave",
+    "cost": 20,
+    "effect": "150 power",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "High Counter",
+    "cost": 0,
+    "effect": "20% chance of reflecting phys/gun attacks",
+    "target": "Self"
+  },
+  {
+    "element": "phy",
+    "name": "Hysterical Slap",
+    "cost": 9,
+    "effect": "80 power, 70% Rage",
+    "target": "1 foe"
+  },
+  {
+    "element": "ice",
+    "name": "Ice Age",
+    "cost": 1054,
+    "effect": "180 power",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Ice Amp",
+    "cost": 0,
+    "effect": "Ice dmg x1.5",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Ice Boost",
+    "cost": 0,
+    "effect": "Ice dmg x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "sup",
+    "name": "Ice Break",
+    "cost": 1015,
+    "effect": "Set Ice resistance to neutral for 3 turns",
+    "target": "All foes"
+  },
+  {
+    "element": "sup",
+    "name": "Ice Wall",
+    "cost": 1018,
+    "effect": "Set Ice resistance to resists for 3 turns",
+    "target": "1 ally"
+  },
+  {
+    "element": "fir",
+    "name": "Inferno",
+    "cost": 1048,
+    "effect": "200 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Insta-Heal",
+    "cost": 0,
+    "effect": "Recover from ailments in 1 turn",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Invigorate 1",
+    "cost": 0,
+    "effect": "Restores 3 SP each turn",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Invigorate 2",
+    "cost": 0,
+    "effect": "Restores 5 SP each turn",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Invigorate 3",
+    "cost": 0,
+    "effect": "Restores 7 SP each turn",
+    "target": "Self"
+  },
+  {
+    "element": "lig",
+    "name": "Kouga",
+    "cost": 1008,
+    "effect": "120 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "lig",
+    "name": "Kougaon",
+    "cost": 1012,
+    "effect": "190 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "lig",
+    "name": "Kouha",
+    "cost": 1004,
+    "effect": "50 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Life Aid",
+    "cost": 0,
+    "effect": "Restores 8% HP and SP after a successful battle",
+    "target": "Self"
+  },
+  {
+    "element": "alm",
+    "name": "Life Drain",
+    "cost": 1003,
+    "effect": "Absorbs 30 HP",
+    "target": "1 foe"
+  },
+  {
+    "element": "alm",
+    "name": "Life Leech",
+    "cost": 0,
+    "effect": "Absorbs 150 HP",
+    "target": "1 foe"
+  },
+  {
+    "element": "phy",
+    "name": "Lucky Punch",
+    "cost": 6,
+    "effect": "25 power, 50% crit, 75% hit",
+    "target": "1 foe"
+  },
+  {
+    "element": "ail",
+    "name": "Lullaby",
+    "cost": 1012,
+    "effect": "70% Sleep",
+    "target": "All foes"
+  },
+  {
+    "element": "phy",
+    "name": "Lunge",
+    "cost": 5,
+    "effect": "60 power, 20% crit",
+    "target": "1 foe"
+  },
+  {
+    "element": "rec",
+    "name": "Mabaisudi",
+    "cost": 1008,
+    "effect": "Cure Burn, Freeze, Shock",
+    "target": "All allies"
+  },
+  {
+    "element": "ice",
+    "name": "Mabufu",
+    "cost": 1010,
+    "effect": "40 power",
+    "target": "All foes"
+  },
+  {
+    "element": "ice",
+    "name": "Mabufudyne",
+    "cost": 1022,
+    "effect": "160 power",
+    "target": "All foes"
+  },
+  {
+    "element": "ice",
+    "name": "Mabufula",
+    "cost": 1016,
+    "effect": "100 power",
+    "target": "All foes"
+  },
+  {
+    "element": "dar",
+    "name": "Maeiga",
+    "cost": 1016,
+    "effect": "120 power",
+    "target": "All foes"
+  },
+  {
+    "element": "dar",
+    "name": "Maeigaon",
+    "cost": 1022,
+    "effect": "190 power",
+    "target": "All foes"
+  },
+  {
+    "element": "dar",
+    "name": "Maeiha",
+    "cost": 1010,
+    "effect": "50 power",
+    "target": "All foes"
+  },
+  {
+    "element": "nuk",
+    "name": "Mafrei",
+    "cost": 1010,
+    "effect": "40 power",
+    "target": "All foes"
+  },
+  {
+    "element": "nuk",
+    "name": "Mafreidyne",
+    "cost": 1022,
+    "effect": "160 power",
+    "target": "All foes"
+  },
+  {
+    "element": "nuk",
+    "name": "Mafreila",
+    "cost": 1016,
+    "effect": "100 power",
+    "target": "All foes"
+  },
+  {
+    "element": "win",
+    "name": "Magaru",
+    "cost": 1008,
+    "effect": "40 power",
+    "target": "All foes"
+  },
+  {
+    "element": "win",
+    "name": "Magarudyne",
+    "cost": 1020,
+    "effect": "160 power",
+    "target": "All foes"
+  },
+  {
+    "element": "win",
+    "name": "Magarula",
+    "cost": 1014,
+    "effect": "100 power",
+    "target": "All foes"
+  },
+  {
+    "element": "dar",
+    "name": "Magatsu Mandala",
+    "cost": 1030,
+    "effect": "160 power, 70% Confuse, Fear, Despair",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Magic Ability",
+    "cost": 0,
+    "effect": "Magic dmg x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "lig",
+    "name": "Mahama",
+    "cost": 1018,
+    "effect": "30% instakill",
+    "target": "All foes"
+  },
+  {
+    "element": "lig",
+    "name": "Mahamaon",
+    "cost": 1034,
+    "effect": "60% instakill",
+    "target": "All foes"
+  },
+  {
+    "element": "ail",
+    "name": "Makajam",
+    "cost": 1005,
+    "effect": "90% Forget",
+    "target": "1 foe"
+  },
+  {
+    "element": "ail",
+    "name": "Makajamaon",
+    "cost": 1012,
+    "effect": "70% Forget",
+    "target": "All foes"
+  },
+  {
+    "element": "sup",
+    "name": "Makara Break",
+    "cost": 1018,
+    "effect": "Removes Makarakarn",
+    "target": "All foes"
+  },
+  {
+    "element": "sup",
+    "name": "Makarakarn",
+    "cost": 1036,
+    "effect": "Repel next magic non-Almighty magic attack",
+    "target": "1 ally"
+  },
+  {
+    "element": "lig",
+    "name": "Makouga",
+    "cost": 1016,
+    "effect": "120 power",
+    "target": "All foes"
+  },
+  {
+    "element": "lig",
+    "name": "Makougaon",
+    "cost": 1022,
+    "effect": "190 power",
+    "target": "All foes"
+  },
+  {
+    "element": "lig",
+    "name": "Makouha",
+    "cost": 1010,
+    "effect": "50 power",
+    "target": "All foes"
+  },
+  {
+    "element": "dar",
+    "name": "Mamudo",
+    "cost": 1018,
+    "effect": "30% instakill",
+    "target": "All foes"
+  },
+  {
+    "element": "dar",
+    "name": "Mamudoon",
+    "cost": 1034,
+    "effect": "60% instakill",
+    "target": "All foes"
+  },
+  {
+    "element": "psy",
+    "name": "Mapsi",
+    "cost": 1010,
+    "effect": "40 power",
+    "target": "All foes"
+  },
+  {
+    "element": "psy",
+    "name": "Mapsio",
+    "cost": 1016,
+    "effect": "100 power",
+    "target": "All foes"
+  },
+  {
+    "element": "psy",
+    "name": "Mapsiodyne",
+    "cost": 1022,
+    "effect": "160 power",
+    "target": "All foes"
+  },
+  {
+    "element": "fir",
+    "name": "Maragi",
+    "cost": 1010,
+    "effect": "40 power",
+    "target": "All foes"
+  },
+  {
+    "element": "fir",
+    "name": "Maragidyne",
+    "cost": 1022,
+    "effect": "160 power",
+    "target": "All foes"
+  },
+  {
+    "element": "fir",
+    "name": "Maragion",
+    "cost": 1016,
+    "effect": "100 power",
+    "target": "All foes"
+  },
+  {
+    "element": "sup",
+    "name": "Marakukaja",
+    "cost": 1024,
+    "effect": "Increase defense for 3 turns",
+    "target": "All allies"
+  },
+  {
+    "element": "sup",
+    "name": "Marakunda",
+    "cost": 1024,
+    "effect": "Decrease defense for 3 turns",
+    "target": "All foes"
+  },
+  {
+    "element": "ail",
+    "name": "Marin Karin",
+    "cost": 1005,
+    "effect": "90% Brainwash",
+    "target": "1 foe"
+  },
+  {
+    "element": "sup",
+    "name": "Masukukaja",
+    "cost": 1024,
+    "effect": "Increase hit/evade for 3 turns",
+    "target": "All allies"
+  },
+  {
+    "element": "sup",
+    "name": "Masukunda",
+    "cost": 1024,
+    "effect": "Decrease hit/evade for 3 turns",
+    "target": "All foes"
+  },
+  {
+    "element": "sup",
+    "name": "Matarukaja",
+    "cost": 1024,
+    "effect": "Increase attack for 3 turns",
+    "target": "All allies"
+  },
+  {
+    "element": "sup",
+    "name": "Matarunda",
+    "cost": 1024,
+    "effect": "Decrease attack for 3 turns",
+    "target": "All foes"
+  },
+  {
+    "element": "ele",
+    "name": "Mazio",
+    "cost": 1010,
+    "effect": "40 power",
+    "target": "All foes"
+  },
+  {
+    "element": "ele",
+    "name": "Maziodyne",
+    "cost": 1022,
+    "effect": "160 power",
+    "target": "All foes"
+  },
+  {
+    "element": "ele",
+    "name": "Mazionga",
+    "cost": 1016,
+    "effect": "100 power",
+    "target": "All foes"
+  },
+  {
+    "element": "rec",
+    "name": "Me Patra",
+    "cost": 1008,
+    "effect": "Cure Dizzy, Forget, Sleep, Hunger",
+    "target": "All allies"
+  },
+  {
+    "element": "rec",
+    "name": "Media",
+    "cost": 1007,
+    "effect": "40 power HP restore",
+    "target": "All allies"
+  },
+  {
+    "element": "rec",
+    "name": "Mediarahan",
+    "cost": 1030,
+    "effect": "Full HP restore",
+    "target": "All allies"
+  },
+  {
+    "element": "rec",
+    "name": "Mediarama",
+    "cost": 1012,
+    "effect": "140 power HP restore",
+    "target": "All allies"
+  },
+  {
+    "element": "phy",
+    "name": "Megaton Raid",
+    "cost": 16,
+    "effect": "300 power, 25% crit",
+    "target": "1 foe"
+  },
+  {
+    "element": "alm",
+    "name": "Megido",
+    "cost": 1015,
+    "effect": "120 power",
+    "target": "All foes"
+  },
+  {
+    "element": "alm",
+    "name": "Megidola",
+    "cost": 1024,
+    "effect": "180 power",
+    "target": "All foes"
+  },
+  {
+    "element": "alm",
+    "name": "Megidolaon",
+    "cost": 1038,
+    "effect": "210 power",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Mementos Scan",
+    "cost": 0,
+    "effect": "Chance to fully map a floor of Mementos when entering that floor",
+    "target": "Self"
+  },
+  {
+    "element": "phy",
+    "name": "Memory Blow",
+    "cost": 15,
+    "effect": "70 power, 50% Forget",
+    "target": "All foes"
+  },
+  {
+    "element": "phy",
+    "name": "Mind Slice",
+    "cost": 19,
+    "effect": "110 power, 50% Confuse",
+    "target": "All foes"
+  },
+  {
+    "element": "phy",
+    "name": "Miracle Punch",
+    "cost": 8,
+    "effect": "80 power, 55% crit, 75% hit",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Moral Support",
+    "cost": 0,
+    "effect": "Chance to cast a -kaja or HP recovery skill during battle",
+    "target": "Self"
+  },
+  {
+    "element": "alm",
+    "name": "Morning Star",
+    "cost": 1054,
+    "effect": "230 power",
+    "target": "All foes"
+  },
+  {
+    "element": "dar",
+    "name": "Mudo",
+    "cost": 1008,
+    "effect": "30% instakill",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Mudo Boost",
+    "cost": 0,
+    "effect": "Curse instakill affliction rate x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "dar",
+    "name": "Mudoon",
+    "cost": 1015,
+    "effect": "60% instakill",
+    "target": "1 foe"
+  },
+  {
+    "element": "phy",
+    "name": "Myriad Slashes",
+    "cost": 20,
+    "effect": "90 power, 2-3 hits",
+    "target": "1 foe"
+  },
+  {
+    "element": "phy",
+    "name": "Negative Pile",
+    "cost": 12,
+    "effect": "120 power, 70% Despair",
+    "target": "1 foe"
+  },
+  {
+    "element": "ail",
+    "name": "Nocturnal Flash",
+    "cost": 1012,
+    "effect": "70% Dizzy",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Nuke Amp",
+    "cost": 0,
+    "effect": "Nuke dmg x1.5",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Nuke Boost",
+    "cost": 0,
+    "effect": "Nuke dmg x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "sup",
+    "name": "Nuke Break",
+    "cost": 1015,
+    "effect": "Set Nuke resistance to neutral for 3 turns",
+    "target": "All foes"
+  },
+  {
+    "element": "sup",
+    "name": "Nuke Wall",
+    "cost": 1018,
+    "effect": "Set Nuke resistance to resists for 3 turns",
+    "target": "1 ally"
+  },
+  {
+    "element": "pas",
+    "name": "Null Bless",
+    "cost": 0,
+    "effect": "Nullifies Bless attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Null Brainwash",
+    "cost": 0,
+    "effect": "Immune to Brainwash",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Null Confuse",
+    "cost": 0,
+    "effect": "Immune to Confuse",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Null Curse",
+    "cost": 0,
+    "effect": "Nullifies Curse attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Null Despair",
+    "cost": 0,
+    "effect": "Immune to Despair",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Null Dizzy",
+    "cost": 0,
+    "effect": "Immune to Dizzy",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Null Elec",
+    "cost": 0,
+    "effect": "Nullifies Elec attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Null Fear",
+    "cost": 0,
+    "effect": "Immune to Fear",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Null Fire",
+    "cost": 0,
+    "effect": "Nullifies Fire attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Null Forget",
+    "cost": 0,
+    "effect": "Immune to Forget",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Null Ice",
+    "cost": 0,
+    "effect": "Nullifies Ice attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Null Nuke",
+    "cost": 0,
+    "effect": "Nullifies Nuke attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Null Phys",
+    "cost": 0,
+    "effect": "Nullifies Phys attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Null Psy",
+    "cost": 0,
+    "effect": "Nullifies Psy attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Null Rage",
+    "cost": 0,
+    "effect": "Immune to Rage",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Null Sleep",
+    "cost": 0,
+    "effect": "Immune to Sleep",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Null Wind",
+    "cost": 0,
+    "effect": "Nullifies Wind attacks",
+    "target": "Self"
+  },
+  {
+    "element": "ail",
+    "name": "Ominous Words",
+    "cost": 1005,
+    "effect": "90% Despair",
+    "target": "1 foe"
+  },
+  {
+    "element": "gun",
+    "name": "One-shot Kill",
+    "cost": 17,
+    "effect": "210 power, 40% crit",
+    "target": "1 foe"
+  },
+  {
+    "element": "phy",
+    "name": "Oni Kagura",
+    "cost": 16,
+    "effect": "80 power, 50% Rage",
+    "target": "All foes"
+  },
+  {
+    "element": "rec",
+    "name": "Oratorio",
+    "cost": 1038,
+    "effect": "Mediarahan + Dekunda",
+    "target": "All allies"
+  },
+  {
+    "element": "win",
+    "name": "Panta Rhei",
+    "cost": 1042,
+    "effect": "200 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "rec",
+    "name": "Patra",
+    "cost": 1004,
+    "effect": "Cure Dizzy, Forget, Sleep, Hunger",
+    "target": "1 ally"
+  },
+  {
+    "element": "pas",
+    "name": "Position Hack",
+    "cost": 0,
+    "effect": "Chance to instantly Hold Up enemies when starting a battle",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Pressing Stance",
+    "cost": 0,
+    "effect": "Reduce hit rate of incoming dmg by 66% when ambushed",
+    "target": "Self"
+  },
+  {
+    "element": "psy",
+    "name": "Psi",
+    "cost": 1004,
+    "effect": "40 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "psy",
+    "name": "Psio",
+    "cost": 1008,
+    "effect": "100 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "psy",
+    "name": "Psiodyne",
+    "cost": 1012,
+    "effect": "160 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Psy Amp",
+    "cost": 0,
+    "effect": "Psy dmg x1.5",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Psy Boost",
+    "cost": 0,
+    "effect": "Psy dmg x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "sup",
+    "name": "Psy Break",
+    "cost": 1015,
+    "effect": "Set Psy resistance to neutral for 3 turns",
+    "target": "All foes"
+  },
+  {
+    "element": "sup",
+    "name": "Psy Wall",
+    "cost": 1018,
+    "effect": "Set Psy resistance to resists for 3 turns",
+    "target": "1 ally"
+  },
+  {
+    "element": "psy",
+    "name": "Psycho Blast",
+    "cost": 1054,
+    "effect": "180 power",
+    "target": "All foes"
+  },
+  {
+    "element": "psy",
+    "name": "Psycho Force",
+    "cost": 1048,
+    "effect": "200 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "ail",
+    "name": "Pulinpa",
+    "cost": 1005,
+    "effect": "90% Confuse",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Rage Boost",
+    "cost": 0,
+    "effect": "Rage affliction rate x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "sup",
+    "name": "Rakukaja",
+    "cost": 1008,
+    "effect": "Increase defense for 3 turns",
+    "target": "1 ally"
+  },
+  {
+    "element": "sup",
+    "name": "Rakunda",
+    "cost": 1008,
+    "effect": "Decrease defense for 3 turns",
+    "target": "1 foe"
+  },
+  {
+    "element": "phy",
+    "name": "Rampage",
+    "cost": 13,
+    "effect": "30 power, 1-3 hits, 70% hit",
+    "target": "All foes"
+  },
+  {
+    "element": "sup",
+    "name": "Rebellion",
+    "cost": 1005,
+    "effect": "Increase crit rate for 3 turns",
+    "target": "1 ally"
+  },
+  {
+    "element": "rec",
+    "name": "Recarm",
+    "cost": 1008,
+    "effect": "Revive with 50% HP",
+    "target": "1 ally"
+  },
+  {
+    "element": "pas",
+    "name": "Regenerate 1",
+    "cost": 0,
+    "effect": "Restores 2% HP each turn",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Regenerate 2",
+    "cost": 0,
+    "effect": "Restores 4% HP each turn",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Regenerate 3",
+    "cost": 0,
+    "effect": "Restores 6% HP each turn",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Repel Bless",
+    "cost": 0,
+    "effect": "Repels Bless attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Repel Curse",
+    "cost": 0,
+    "effect": "Repels Curse attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Repel Elec",
+    "cost": 0,
+    "effect": "Repels Electric attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Repel Fire",
+    "cost": 0,
+    "effect": "Repels Fire attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Repel Ice",
+    "cost": 0,
+    "effect": "Repels Ice attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Repel Nuke",
+    "cost": 0,
+    "effect": "Repels Nuke attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Repel Phys",
+    "cost": 0,
+    "effect": "Repels Phys attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Repel Psy",
+    "cost": 0,
+    "effect": "Repels Psy attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Repel Wind",
+    "cost": 0,
+    "effect": "Repels Wind attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Bless",
+    "cost": 0,
+    "effect": "Reduces dmg from Bless attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Brainwash",
+    "cost": 0,
+    "effect": "Reduces susceptibility to Brainwash",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Confuse",
+    "cost": 0,
+    "effect": "Reduces susceptibility to Confuse",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Curse",
+    "cost": 0,
+    "effect": "Reduces dmg from Curse attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Despair",
+    "cost": 0,
+    "effect": "Reduces susceptibility to Despair",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Dizzy",
+    "cost": 0,
+    "effect": "Reduces susceptibility to Dizzy",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Elec",
+    "cost": 0,
+    "effect": "Reduces dmg from Elec attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Fear",
+    "cost": 0,
+    "effect": "Reduces susceptibility to Fear",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Fire",
+    "cost": 0,
+    "effect": "Reduces dmg from Fire attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Forget",
+    "cost": 0,
+    "effect": "Reduces susceptibility to Forget",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Ice",
+    "cost": 0,
+    "effect": "Reduces dmg from Ice attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Nuke",
+    "cost": 0,
+    "effect": "Reduces dmg from Nuke attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Phys",
+    "cost": 0,
+    "effect": "Reduces dmg from Phys attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Psy",
+    "cost": 0,
+    "effect": "Reduces dmg from Psy attacks",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Rage",
+    "cost": 0,
+    "effect": "Reduces susceptibility to Rage",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Sleep",
+    "cost": 0,
+    "effect": "Reduces susceptibility to Sleep",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Resist Wind",
+    "cost": 0,
+    "effect": "Reduces dmg from Wind attacks",
+    "target": "Self"
+  },
+  {
+    "element": "ail",
+    "name": "Reverse Rub",
+    "cost": 0,
+    "effect": "100% Rage",
+    "target": "1 ally"
+  },
+  {
+    "element": "sup",
+    "name": "Revolution",
+    "cost": 1005,
+    "effect": "Increase crit rate for 3 turns",
+    "target": "Universal"
+  },
+  {
+    "element": "gun",
+    "name": "Riot Gun",
+    "cost": 24,
+    "effect": "300 power",
+    "target": "All foes"
+  },
+  {
+    "element": "phy",
+    "name": "Rising Slash",
+    "cost": 14,
+    "effect": "140 power, Dmg x1.5 after Baton Pass",
+    "target": "1 foe"
+  },
+  {
+    "element": "rec",
+    "name": "Salvation",
+    "cost": 1048,
+    "effect": "Mediarahan + Amrita Shower",
+    "target": "All allies"
+  },
+  {
+    "element": "rec",
+    "name": "Samarecarm",
+    "cost": 1018,
+    "effect": "Revive with full HP",
+    "target": "1 ally"
+  },
+  {
+    "element": "lig",
+    "name": "Samsara",
+    "cost": 1044,
+    "effect": "70% instakill",
+    "target": "All foes"
+  },
+  {
+    "element": "alm",
+    "name": "Self-Destruct",
+    "cost": 0,
+    "effect": "120 dmg, Sacrifices user",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Sharp Student",
+    "cost": 0,
+    "effect": "Lowers odds of receiving critical hit",
+    "target": "Self"
+  },
+  {
+    "element": "lig",
+    "name": "Shining Arrows",
+    "cost": 1022,
+    "effect": "15 power, 4-8 hits",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Shock Boost",
+    "cost": 0,
+    "effect": "Shock affliction rate x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "phy",
+    "name": "Skull Cracker",
+    "cost": 10,
+    "effect": "100 power, 70% Confuse",
+    "target": "1 foe"
+  },
+  {
+    "element": "phy",
+    "name": "Sledgehammer",
+    "cost": 10,
+    "effect": "100 power, 70% Dizzy",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Sleep Boost",
+    "cost": 0,
+    "effect": "Sleep affliction rate x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "gun",
+    "name": "Snap",
+    "cost": 9,
+    "effect": "80 power, 20% crit",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Snipe",
+    "cost": 0,
+    "effect": "Gun dmg x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Soul Chain",
+    "cost": 0,
+    "effect": "Restores 20 SP after Baton Pass",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Speed Master",
+    "cost": 0,
+    "effect": "Begin battle with Sukukaja",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Spell Master",
+    "cost": 0,
+    "effect": "Halves SP skill costs",
+    "target": "Self"
+  },
+  {
+    "element": "alm",
+    "name": "Spirit Drain",
+    "cost": 1003,
+    "effect": "Absorbs 10 SP",
+    "target": "1 foe"
+  },
+  {
+    "element": "alm",
+    "name": "Spirit Leech",
+    "cost": 0,
+    "effect": "Absorbs 50 SP",
+    "target": "1 foe"
+  },
+  {
+    "element": "alm",
+    "name": "Stagnant Air",
+    "cost": 1005,
+    "effect": "Increase susceptibility to all ailments",
+    "target": "Universal"
+  },
+  {
+    "element": "phy",
+    "name": "Stomach Blow",
+    "cost": 0,
+    "effect": "100 dmg, Hunger",
+    "target": "1 foe"
+  },
+  {
+    "element": "pas",
+    "name": "Subrecover HP",
+    "cost": 0,
+    "effect": "Restores 10% HP to backup allies after battle",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Subrecover HP EX",
+    "cost": 0,
+    "effect": "Restores 20% HP to backup allies after battle",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Subrecover SP",
+    "cost": 0,
+    "effect": "Restores 1% SP to backup allies after battle",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Subrecover SP EX",
+    "cost": 0,
+    "effect": "Restores 3% SP to backup allies after battle",
+    "target": "Self"
+  },
+  {
+    "element": "sup",
+    "name": "Sukukaja",
+    "cost": 1008,
+    "effect": "Increase hit/evade for 3 turns",
+    "target": "1 ally"
+  },
+  {
+    "element": "sup",
+    "name": "Sukunda",
+    "cost": 1008,
+    "effect": "Decrease hit/evade for 3 turns",
+    "target": "1 foe"
+  },
+  {
+    "element": "alm",
+    "name": "Summon",
+    "cost": 0,
+    "effect": "Summon enemy reinforcements",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Survival Trick",
+    "cost": 0,
+    "effect": "Survive 1 instakill attack with 1 HP per battle",
+    "target": "Self"
+  },
+  {
+    "element": "phy",
+    "name": "Swift Strike",
+    "cost": 17,
+    "effect": "20 power, 2-4 hits, 70% hit",
+    "target": "All foes"
+  },
+  {
+    "element": "phy",
+    "name": "Sword Dance",
+    "cost": 21,
+    "effect": "360 power, 40% crit",
+    "target": "1 foe"
+  },
+  {
+    "element": "sup",
+    "name": "Tarukaja",
+    "cost": 1008,
+    "effect": "Increase attack for 3 turns",
+    "target": "1 ally"
+  },
+  {
+    "element": "sup",
+    "name": "Tarunda",
+    "cost": 1008,
+    "effect": "Decrease attack for 3 turns",
+    "target": "1 foe"
+  },
+  {
+    "element": "ail",
+    "name": "Taunt",
+    "cost": 1005,
+    "effect": "90% Rage",
+    "target": "1 foe"
+  },
+  {
+    "element": "phy",
+    "name": "Tempest Slash",
+    "cost": 17,
+    "effect": "20 power, 3-5 hits",
+    "target": "1 foe"
+  },
+  {
+    "element": "ail",
+    "name": "Tentarafoo",
+    "cost": 1012,
+    "effect": "70% Confuse",
+    "target": "All foes"
+  },
+  {
+    "element": "phy",
+    "name": "Terror Claw",
+    "cost": 8,
+    "effect": "70 power, 70% Fear",
+    "target": "1 foe"
+  },
+  {
+    "element": "sup",
+    "name": "Tetra Break",
+    "cost": 1018,
+    "effect": "Remove Tetrakarn",
+    "target": "All foes"
+  },
+  {
+    "element": "sup",
+    "name": "Tetraja",
+    "cost": 1024,
+    "effect": "Negate next instakill attack",
+    "target": "All allies"
+  },
+  {
+    "element": "sup",
+    "name": "Tetrakarn",
+    "cost": 1036,
+    "effect": "Repel next phys/gun attack",
+    "target": "1 ally"
+  },
+  {
+    "element": "sup",
+    "name": "Thermopylae",
+    "cost": 1030,
+    "effect": "Heat Riser, Only usuable when ambushed",
+    "target": "All allies"
+  },
+  {
+    "element": "ele",
+    "name": "Thunder Reign",
+    "cost": 1048,
+    "effect": "200 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "fir",
+    "name": "Titanomachia",
+    "cost": 1034,
+    "effect": "210 power, 90% Fear",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Touch n' Go",
+    "cost": 0,
+    "effect": "Applies Sukukaja after Baton Pass",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Treasure Reboot",
+    "cost": 0,
+    "effect": "Chance to restore search objects in the area after battle",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Treasure Skimmer",
+    "cost": 0,
+    "effect": "Identifies foes carrying a rare item",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Trigger Happy",
+    "cost": 0,
+    "effect": "Crit rate x1.15 for Gun attacks",
+    "target": "Self"
+  },
+  {
+    "element": "gun",
+    "name": "Triple Down",
+    "cost": 16,
+    "effect": "30 power, 3 hits, 70% hit",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Unshaken Will",
+    "cost": 0,
+    "effect": "Immune to Confuse, Fear, Rage, and Despair",
+    "target": "Self"
+  },
+  {
+    "element": "win",
+    "name": "Vacuum Wave",
+    "cost": 1048,
+    "effect": "200 power",
+    "target": "All foes"
+  },
+  {
+    "element": "phy",
+    "name": "Vajra Blast",
+    "cost": 14,
+    "effect": "80 power",
+    "target": "All foes"
+  },
+  {
+    "element": "phy",
+    "name": "Vicious Strike",
+    "cost": 18,
+    "effect": "110 power",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Victory Cry",
+    "cost": 0,
+    "effect": "Restores full HP and SP after a successful battle",
+    "target": "Self"
+  },
+  {
+    "element": "phy",
+    "name": "Vorpal Blade",
+    "cost": 23,
+    "effect": "210 power",
+    "target": "All foes"
+  },
+  {
+    "element": "ail",
+    "name": "Wage War",
+    "cost": 1012,
+    "effect": "70% Rage",
+    "target": "All foes"
+  },
+  {
+    "element": "ele",
+    "name": "Wild Thunder",
+    "cost": 1054,
+    "effect": "180 power",
+    "target": "All foes"
+  },
+  {
+    "element": "pas",
+    "name": "Wind Amp",
+    "cost": 0,
+    "effect": "Wind dmg x1.5",
+    "target": "Self"
+  },
+  {
+    "element": "pas",
+    "name": "Wind Boost",
+    "cost": 0,
+    "effect": "Wind dmg x1.25",
+    "target": "Self"
+  },
+  {
+    "element": "sup",
+    "name": "Wind Break",
+    "cost": 1015,
+    "effect": "Set Wind resistance to neutral for 3 turns",
+    "target": "All foes"
+  },
+  {
+    "element": "sup",
+    "name": "Wind Wall",
+    "cost": 1018,
+    "effect": "Set Wind resistance to resists for 3 turns",
+    "target": "1 ally"
+  },
+  {
+    "element": "ele",
+    "name": "Zio",
+    "cost": 1004,
+    "effect": "40 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "ele",
+    "name": "Ziodyne",
+    "cost": 1012,
+    "effect": "160 power",
+    "target": "1 foe"
+  },
+  {
+    "element": "ele",
+    "name": "Zionga",
+    "cost": 1008,
+    "effect": "100 power",
+    "target": "1 foe"
+  }
+]
