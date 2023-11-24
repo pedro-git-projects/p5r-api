@@ -30,6 +30,85 @@ class PersonaBlueprint:
         )
 
     def get_all_personas(self):
+        """
+        Get all personas
+        ---
+        tags:
+          - Personas
+        responses:
+          200:
+            description: List of personas
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: The unique identifier for the persona.
+                  name:
+                    type: string
+                    description: The name of the persona (e.g., "Abaddon").
+                  inherits:
+                    type: string
+                    description: The type of damage the persona inherits (e.g., "curse").
+
+                  item:
+                    type: string
+                    description: The item associated with the persona (e.g., "Megaton Raid Belt").
+                  itemr:
+                    type: string
+                    description: The rare item associated with the persona (e.g., "God's Hand Belt").
+                  lvl:
+                    type: integer
+                    description: The level of the persona (e.g., 75).
+                  trait:
+                    type: string
+                    description: The trait of the persona (e.g., "Mouth of Savoring").
+                  arcana:
+                    type: string
+                    description: The arcana associated with the persona (e.g., "Judgement").
+                  rare:
+                    type: boolean
+                    description: Indicates whether the persona is rare (e.g., false).
+                  special:
+                    type: boolean
+                    description: Indicates whether the persona has special characteristics (e.g., false).
+                  resists:
+                    type: object
+                    description: Resistances of the persona to various damage types.
+                    example:
+                      bless: "s"
+                      curse: "d"
+                      elec: "-"
+                      fire: "-"
+                      gun: "d"
+                      ice: "-"
+                      nuke: "-"
+                      phys: "d"
+                      pys: "-"
+                      wind: "-"
+                  skills:
+                    type: object
+                    description: Skills possessed by the persona and their corresponding levels.
+                    example:
+                      "Absorb Phys": 80
+                      "Ailment Boost": 79
+                      "Enduring Soul": 0
+                      "Flash Bomb": 78
+                      "Gigantomachia": 81
+                      "Mabufudyne": 0
+                      "Megaton Raid": 0
+                  stats:
+                    type: object
+                    description: Base stats of the persona.
+                    example:
+                      ag: 38
+                      en: 58
+                      lu: 43
+                      ma: 42
+                      st: 51
+        """  # noqa: E501
         db = get_db()
         cursor = db.cursor()
 
@@ -60,6 +139,97 @@ class PersonaBlueprint:
         return jsonify(personas_list)
 
     def get_persona_by_name(self, name: str):
+        """
+        Get persona by name
+        ---
+        tags:
+          - Personas
+        parameters:
+          - name: name
+            in: path
+            type: string
+            required: true
+            description: The name of the persona to search for.
+        responses:
+          200:
+            description: Persona details
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: The unique identifier for the persona.
+                name:
+                  type: string
+                  description: The name of the persona.
+                inherits:
+                  type: string
+                  description: The type of damage the persona inherits.
+                item:
+                  type: string
+                  description: The item associated with the persona.
+                itemr:
+                  type: string
+                  description: The rare item associated with the persona.
+                lvl:
+                  type: integer
+                  description: The level of the persona.
+                trait:
+                  type: string
+                  description: The trait of the persona.
+                arcana:
+                  type: string
+                  description: The arcana associated with the persona.
+                rare:
+                  type: boolean
+                  description: Indicates whether the persona is rare.
+                special:
+                  type: boolean
+                  description: Indicates whether the persona has special characteristics.
+                resists:
+                  type: object
+                  description: Resistances of the persona to various damage types.
+                  example:
+                    bless: "s"
+                    curse: "d"
+                    elec: "-"
+                    fire: "-"
+                    gun: "d"
+                    ice: "-"
+                    nuke: "-"
+                    phys: "d"
+                    pys: "-"
+                    wind: "-"
+                skills:
+                  type: object
+                  description: Skills possessed by the persona and their corresponding levels.
+                  example:
+                    "Absorb Phys": 80
+                    "Ailment Boost": 79
+                    "Enduring Soul": 0
+                    "Flash Bomb": 78
+                    "Gigantomachia": 81
+                    "Mabufudyne": 0
+                    "Megaton Raid": 0
+                stats:
+                  type: object
+                  description: Base stats of the persona.
+                  example:
+                    ag: 38
+                    en: 58
+                    lu: 43
+                    ma: 42
+                    st: 51
+          404:
+            description: Persona not found
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating that the persona was not found.
+        """  # noqa: E501
+
         db = get_db()
         cursor = db.cursor()
 
@@ -93,6 +263,97 @@ class PersonaBlueprint:
         return jsonify(persona_dict)
 
     def get_persona_by_exact_name(self, name: str):
+        """
+        Get persona by exact name
+        ---
+        tags:
+          - Personas
+        parameters:
+          - name: name
+            in: path
+            type: string
+            required: true
+            description: The exact name of the persona to search for.
+        responses:
+          200:
+            description: Persona details
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: The unique identifier for the persona.
+                name:
+                  type: string
+                  description: The name of the persona.
+                inherits:
+                  type: string
+                  description: The type of damage the persona inherits.
+                item:
+                  type: string
+                  description: The item associated with the persona.
+                itemr:
+                  type: string
+                  description: The rare item associated with the persona.
+                lvl:
+                  type: integer
+                  description: The level of the persona.
+                trait:
+                  type: string
+                  description: The trait of the persona.
+                arcana:
+                  type: string
+                  description: The arcana associated with the persona.
+                rare:
+                  type: boolean
+                  description: Indicates whether the persona is rare.
+                special:
+                  type: boolean
+                  description: Indicates whether the persona has special characteristics.
+                resists:
+                  type: object
+                  description: Resistances of the persona to various damage types.
+                  example:
+                    bless: "s"
+                    curse: "d"
+                    elec: "-"
+                    fire: "-"
+                    gun: "d"
+                    ice: "-"
+                    nuke: "-"
+                    phys: "d"
+                    pys: "-"
+                    wind: "-"
+                skills:
+                  type: object
+                  description: Skills possessed by the persona and their corresponding levels.
+                  example:
+                    "Absorb Phys": 80
+                    "Ailment Boost": 79
+                    "Enduring Soul": 0
+                    "Flash Bomb": 78
+                    "Gigantomachia": 81
+                    "Mabufudyne": 0
+                    "Megaton Raid": 0
+                stats:
+                  type: object
+                  description: Base stats of the persona.
+                  example:
+                    ag: 38
+                    en: 58
+                    lu: 43
+                    ma: 42
+                    st: 51
+          404:
+            description: Persona not found
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating that the persona was not found.
+        """  # noqa: E501
+
         db = get_db()
         cursor = db.cursor()
 
@@ -126,6 +387,98 @@ class PersonaBlueprint:
         return jsonify(persona_dict)
 
     def get_detailed_persona_by_name(self, name: str):
+        """
+        Get detailed persona by name
+        ---
+        tags:
+          - Personas
+        parameters:
+          - name: name
+            in: path
+            type: string
+            required: true
+            description: The name of the persona to search for.
+        responses:
+          200:
+            description: Persona details
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: The unique identifier for the persona.
+                name:
+                  type: string
+                  description: The name of the persona.
+                inherits:
+                  type: string
+                  description: The type of damage the persona inherits.
+                item:
+                  type: string
+                  description: The item associated with the persona.
+                itemr:
+                  type: string
+                  description: The rare item associated with the persona.
+                lvl:
+                  type: integer
+                  description: The level of the persona.
+                trait:
+                  type: string
+                  description: The trait of the persona.
+                arcana:
+                  type: string
+                  description: The arcana associated with the persona.
+                resists:
+                  type: object
+                  description: Resistances of the persona to various damage types.
+                  example:
+                    bless: "s"
+                    curse: "d"
+                    elec: "-"
+                    fire: "-"
+                    gun: "d"
+                    ice: "-"
+                    nuke: "-"
+                    phys: "d"
+                    pys: "-"
+                    wind: "-"
+                skills:
+                  type: object
+                  description: Skills possessed by the persona and their corresponding levels.
+                  example:
+                    "Absorb Phys": 80
+                    "Ailment Boost": 79
+                    "Enduring Soul": 0
+                    "Flash Bomb": 78
+                    "Gigantomachia": 81
+                    "Mabufudyne": 0
+                    "Megaton Raid": 0
+                detailed_skills:
+                  type: object
+                  description: Detailed skills for the persona.
+                  example:
+                    "Megaton Raid": "Heavy Phys damage to 1 foe."
+                    "Enduring Soul": "Survive one lethal attack with 1 HP remaining."
+                    "Gigantomachia": "Colossal Phys damage to 1 foe."
+                stats:
+                  type: object
+                  description: Base stats of the persona.
+                  example:
+                    ag: 38
+                    en: 58
+                    lu: 43
+                    ma: 42
+                    st: 51
+          404:
+            description: Persona not found
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating that the persona was not found.
+        """  # noqa: E501
+
         db = get_db()
         cursor = db.cursor()
 
@@ -156,6 +509,109 @@ class PersonaBlueprint:
         return jsonify(persona_dict)
 
     def create_persona(self):
+        """
+        Create a new persona
+        ---
+        tags:
+          - Personas
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: persona
+            description: Persona data to create a new persona
+            required: true
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the persona.
+                inherits:
+                  type: string
+                  description: The type of damage the persona inherits.
+                item:
+                  type: string
+                  description: The item associated with the persona.
+                itemr:
+                  type: string
+                  description: The rare item associated with the persona.
+                lvl:
+                  type: integer
+                  description: The level of the persona.
+                trait:
+                  type: string
+                  description: The trait of the persona.
+                arcana:
+                  type: string
+                  description: The arcana associated with the persona.
+                rare:
+                  type: boolean
+                  description: Indicates whether the persona is rare.
+                special:
+                  type: boolean
+                  description: Indicates whether the persona has special characteristics.
+                resists:
+                  type: object
+                  description: Resistances of the persona to various damage types.
+                  example:
+                    bless: "s"
+                    curse: "d"
+                    elec: "-"
+                    fire: "-"
+                    gun: "d"
+                    ice: "-"
+                    nuke: "-"
+                    phys: "d"
+                    pys: "-"
+                    wind: "-"
+                skills:
+                  type: object
+                  description: Skills possessed by the persona and their corresponding levels.
+                  example:
+                    "Absorb Phys": 80
+                    "Ailment Boost": 79
+                    "Enduring Soul": 0
+                    "Flash Bomb": 78
+                    "Gigantomachia": 81
+                    "Mabufudyne": 0
+                    "Megaton Raid": 0
+                stats:
+                  type: object
+                  description: Base stats of the persona.
+                  example:
+                    ag: 38
+                    en: 58
+                    lu: 43
+                    ma: 42
+                    st: 51
+        responses:
+          201:
+            description: Persona created successfully
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: The unique identifier for the created persona.
+          400:
+            description: Bad request. A persona with the same name already exists.
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating the persona already exists.
+          500:
+            description: Internal Server Error. Failed to create persona.
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating the failure to create persona.
+        """  # noqa: E501
+
         db = get_db()
         cursor = db.cursor()
 
@@ -254,6 +710,111 @@ class PersonaBlueprint:
             return jsonify({"error": "Failed to create Persona"}), 500
 
     def create_personas(self):
+        """
+        Create multiple personas
+        ---
+        tags:
+          - Personas
+        consumes:
+          - application/json
+        parameters:
+          - in: body
+            name: personas
+            description: List of personas to create
+            required: true
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: The name of the persona.
+                  inherits:
+                    type: string
+                    description: The type of damage the persona inherits.
+                  item:
+                    type: string
+                    description: The item associated with the persona.
+                  itemr:
+                    type: string
+                    description: The rare item associated with the persona.
+                  lvl:
+                    type: integer
+                    description: The level of the persona.
+                  trait:
+                    type: string
+                    description: The trait of the persona.
+                  arcana:
+                    type: string
+                    description: The arcana associated with the persona.
+                  rare:
+                    type: boolean
+                    description: Indicates whether the persona is rare.
+                  special:
+                    type: boolean
+                    description: Indicates whether the persona has special characteristics.
+                  resists:
+                    type: object
+                    description: Resistances of the persona to various damage types.
+                    example:
+                      bless: "s"
+                      curse: "d"
+                      elec: "-"
+                      fire: "-"
+                      gun: "d"
+                      ice: "-"
+                      nuke: "-"
+                      phys: "d"
+                      pys: "-"
+                      wind: "-"
+                  skills:
+                    type: object
+                    description: Skills possessed by the persona and their corresponding levels.
+                    example:
+                      "Absorb Phys": 80
+                      "Ailment Boost": 79
+                      "Enduring Soul": 0
+                      "Flash Bomb": 78
+                      "Gigantomachia": 81
+                      "Mabufudyne": 0
+                      "Megaton Raid": 0
+                  stats:
+                    type: object
+                    description: Base stats of the persona.
+                    example:
+                      ag: 38
+                      en: 58
+                      lu: 43
+                      ma: 42
+                      st: 51
+        responses:
+          201:
+            description: Personas created successfully
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: A success message indicating the personas were created successfully.
+          400:
+            description: Bad request. Invalid data format or a persona with the same name already exists.
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating the issue with the request.
+          500:
+            description: Internal Server Error. Failed to create personas.
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating the failure to create personas.
+        """  # noqa: E501
+
         db = get_db()
         cursor = db.cursor()
 
@@ -362,6 +923,44 @@ class PersonaBlueprint:
             return jsonify({"error": "Failed to create Personas"}), 500
 
     def delete_persona_by_name(self, name: str):
+        """
+        Delete a persona by name
+        ---
+        tags:
+          - Personas
+        parameters:
+          - name: name
+            in: path
+            type: string
+            required: true
+            description: The name of the persona to delete.
+        responses:
+          200:
+            description: Persona deleted successfully
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: A success message indicating the deletion of the persona.
+          404:
+            description: Persona not found.
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating that the persona was not found.
+          500:
+            description: Internal Server Error. Failed to delete persona.
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating the failure to delete persona.
+        """  # noqa: E501
+
         db = get_db()
         cursor = db.cursor()
 
@@ -398,6 +997,69 @@ class PersonaBlueprint:
             return jsonify({"error": "Failed to delete Persona"}), 500
 
     def update_persona_by_name(self, name: str):
+        """
+        Update a persona by name
+        ---
+        tags:
+          - Personas
+        parameters:
+          - name: name
+            in: path
+            type: string
+            required: true
+            description: The name of the persona to update.
+          - in: body
+            name: persona_data
+            description: Data to update for the persona
+            required: true
+            schema:
+              type: object
+              properties:
+                inherits:
+                  type: string
+                  description: The type of damage the persona inherits.
+                item:
+                  type: string
+                  description: The item associated with the persona.
+                itemr:
+                  type: string
+                  description: The rare item associated with the persona.
+                lvl:
+                  type: integer
+                  description: The level of the persona.
+                trait:
+                  type: string
+                  description: The trait of the persona.
+                arcana:
+                  type: string
+                  description: The arcana associated with the persona.
+        responses:
+          200:
+            description: Persona updated successfully
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: A success message indicating the update of the persona.
+          404:
+            description: Persona not found.
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating that the persona was not found.
+          500:
+            description: Internal Server Error. Failed to update persona.
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating the failure to update persona.
+        """
+
         db = get_db()
         cursor = db.cursor()
 

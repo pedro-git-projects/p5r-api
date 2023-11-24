@@ -16,6 +16,53 @@ class SkillsBlueprint:
         )
 
     def get_all_skills(self):
+        """
+        Get a list of all skills
+        ---
+        tags:
+          - Skills
+        responses:
+          200:
+            description: List of all skills
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: The unique identifier for the skill.
+                  element:
+                    type: string
+                    description: The elemental affinity of the skill.
+                  name:
+                    type: string
+                    description: The name of the skill.
+                  cost:
+                    type: integer
+                    description: The cost associated with using the skill.
+                  effect:
+                    type: string
+                    description: The effect of the skill.
+                  target:
+                    type: string
+                    description: The target of the skill.
+            example:
+              - id: 1
+                element: "pas"
+                name: "Absorb Bless"
+                cost: 0
+                effect: "Absorbs Bless dmg"
+                target: "Self"
+          500:
+            description: Internal Server Error. Failed to retrieve skills.
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating the failure to retrieve skills.
+        """
         db = get_db()
         cursor = db.cursor()
 
@@ -39,6 +86,67 @@ class SkillsBlueprint:
         return jsonify(skills_list)
 
     def create_skill(self):
+        """
+        Create a new skill
+        ---
+        tags:
+          - Skills
+        parameters:
+          - in: body
+            name: skill_data
+            description: Data to create a new skill
+            required: true
+            schema:
+              type: object
+              properties:
+                element:
+                  type: string
+                  description: The elemental affinity of the skill.
+                name:
+                  type: string
+                  description: The name of the skill.
+                cost:
+                  type: integer
+                  description: The cost associated with using the skill.
+                effect:
+                  type: string
+                  description: The effect of the skill.
+                target:
+                  type: string
+                  description: The target of the skill.
+            example:
+              element: "pas"
+              name: "Absorb Bless"
+              cost: 0
+              effect: "Absorbs Bless dmg"
+              target: "Self"
+        responses:
+          201:
+            description: Skill created successfully
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: A success message indicating the creation of the skill.
+          400:
+            description: Bad Request. Skill with the given name already exists.
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating that the skill with the given name already exists.
+          500:
+            description: Internal Server Error. Failed to create skill.
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating the failure to create skill.
+        """  # noqa: E501
+
         db = get_db()
         cursor = db.cursor()
 
@@ -68,6 +176,74 @@ class SkillsBlueprint:
         return jsonify({"message": "Skill created successfully"}), 201
 
     def create_skills(self):
+        """
+        Create multiple skills
+        ---
+        tags:
+          - Skills
+        parameters:
+          - in: body
+            name: skills_data
+            description: Data to create multiple skills
+            required: true
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  element:
+                    type: string
+                    description: The elemental affinity of the skill.
+                  name:
+                    type: string
+                    description: The name of the skill.
+                  cost:
+                    type: integer
+                    description: The cost associated with using the skill.
+                  effect:
+                    type: string
+                    description: The effect of the skill.
+                  target:
+                    type: string
+                    description: The target of the skill.
+            example:
+              - element: "pas"
+                name: "Absorb Bless"
+                cost: 0
+                effect: "Absorbs Bless dmg"
+                target: "Self"
+              - element: "fire"
+                name: "Fireball"
+                cost: 10
+                effect: "Deals fire damage"
+                target: "Single Enemy"
+        responses:
+          201:
+            description: Skills created successfully
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: A success message indicating the creation of the skills.
+          400:
+            description: Bad Request. Some skills with the given names already exist.
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating that some skills with the given names already exist.
+          500:
+            description: Internal Server Error. Failed to create skills.
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating the failure to create skills.
+        """  # noqa: E501
+
         db = get_db()
         cursor = db.cursor()
 
@@ -118,6 +294,58 @@ class SkillsBlueprint:
             return jsonify({"message": "Skills created successfully"}), 201
 
     def get_skill_by_name(self, name: str):
+        """
+        Get a skill by name
+        ---
+        tags:
+          - Skills
+        parameters:
+          - in: path
+            name: name
+            type: string
+            description: The name of the skill to retrieve.
+            required: true
+        responses:
+          200:
+            description: The requested skill
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: The unique identifier for the skill.
+                element:
+                  type: string
+                  description: The elemental affinity of the skill.
+                name:
+                  type: string
+                  description: The name of the skill.
+                cost:
+                  type: integer
+                  description: The cost associated with using the skill.
+                effect:
+                  type: string
+                  description: The effect of the skill.
+                target:
+                  type: string
+                  description: The target of the skill.
+            example:
+              id: 1
+              element: "pas"
+              name: "Absorb Bless"
+              cost: 0
+              effect: "Absorbs Bless dmg"
+              target: "Self"
+          404:
+            description: Skill not found. The requested skill with the given name does not exist.
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  description: Error message indicating that the skill with the given name was not found.
+        """  # noqa: E501
+
         db = get_db()
         cursor = db.cursor()
 

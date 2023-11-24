@@ -1,5 +1,6 @@
 from flask import Flask
 from dotenv import load_dotenv
+from flask_cors import CORS
 from flasgger import Swagger
 import os
 
@@ -15,9 +16,10 @@ def create_app(test_config=None):
         SWAGGER={
             "title": "Persona 5 Royal API",
             "uiversion": 3,
-            "version": 1.0,
-            "description": "Compendium and fusion calculator for persona 5 royal.",
-            "tags": [],
+            "description": "Compendium and fusion calculator API for persona 5 royal",
+            "contact": {
+                "url": "https://github.com/pedro-git-projects",
+            },
         },
     )
 
@@ -43,6 +45,7 @@ def create_app(test_config=None):
     app.register_blueprint(SkillsBlueprint("skills", __name__).blueprint)
     app.register_blueprint(FusionCalculatorBlueprint("calculator", __name__).blueprint)
 
-    Swagger(app)
+    CORS(app, resources={r"/*": {"origins": "*"}})
+    Swagger(app, template=app.config["SWAGGER"])
 
     return app
