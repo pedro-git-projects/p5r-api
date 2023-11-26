@@ -55,7 +55,7 @@ def init_db():
         cur.close()
         db.commit()
 
-    with current_app.open_resource("../data/personas.json") as f:
+    with current_app.open_resource("../data/persona_royal.json") as f:
         personas_data = json.load(f)
         cur = db.cursor()
         for persona in personas_data:
