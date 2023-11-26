@@ -519,12 +519,7 @@ class FusionCalculatorBlueprint:
         return None
 
     def fuse_normal(self, persona1, persona2):
-        if (persona1["rare"] and not persona2["rare"]) or (
-            persona2["rare"] and not persona1["rare"]
-        ):
-            return None
-
-        if self.get_special_fuse_result(persona1, persona2) is not None:
+        if persona1["rare"] or persona2["rare"]:
             return None
 
         level = 1 + (persona1["lvl"] + persona2["lvl"]) // 2
@@ -563,6 +558,7 @@ class FusionCalculatorBlueprint:
 
     def fuse_rare(self, rare_persona, main_persona):
         arcana = main_persona["arcana"]
+
         rare_persona_index = self.rare_personas.index(rare_persona["name"])
         modifier = self.rare_combos[arcana][rare_persona_index]
         personae = self.personas_by_arcana[arcana]
@@ -840,6 +836,9 @@ class FusionCalculatorBlueprint:
             return self.get_special_recipe(persona)
 
         recipes = self.get_arcana_recipes(persona["arcana"])
+        if recipes is None:
+            raise ValueError("Recipe list is empty!")
+
         recipes = list(
             filter(lambda value: self.is_good_recipe(value, persona), recipes)
         )
@@ -890,14 +889,13 @@ class FusionCalculatorBlueprint:
                     ) <= personas1.index(persona1):
                         continue
 
-                    if persona1["rare"] and not persona2["rare"]:
-                        continue
-                    if persona2["rare"] and not persona1["rare"]:
+                    if persona1["rare"] or persona2["rare"]:
                         continue
 
                     result = self.fuse_normal(
                         persona_dict[persona1["name"]], persona_dict[persona2["name"]]
                     )
+
                     if not result:
                         continue
 
