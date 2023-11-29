@@ -1,5 +1,6 @@
 from typing import Any, Dict, List
 from flask import Blueprint, jsonify, request
+from flask_jwt_extended import jwt_required
 from p5r.db import get_db
 
 
@@ -10,8 +11,12 @@ class PersonaBlueprint:
 
     def setup_routes(self):
         self.blueprint.route("/personas", methods=["GET"])(self.get_all_personas)
-        self.blueprint.route("/personas", methods=["POST"])(self.create_persona)
-        self.blueprint.route("/personas/many", methods=["POST"])(self.create_personas)
+        self.blueprint.route("/personas", methods=["POST"])(
+            jwt_required()(self.create_persona)
+        )
+        self.blueprint.route("/personas/many", methods=["POST"])(
+            jwt_required()(self.create_personas)
+        )
         self.blueprint.route("/personas/exact/<string:name>", methods=["GET"])(
             self.get_persona_by_exact_name
         )
@@ -23,10 +28,10 @@ class PersonaBlueprint:
         )
 
         self.blueprint.route("/personas/<string:name>", methods=["DELETE"])(
-            self.delete_persona_by_name
+            jwt_required()(self.delete_persona_by_name)
         )
         self.blueprint.route("/personas/<string:name>", methods=["PUT"])(
-            self.update_persona_by_name
+            jwt_required()(self.update_persona_by_name)
         )
 
     def get_all_personas(self):
@@ -607,6 +612,14 @@ class PersonaBlueprint:
                 error:
                   type: string
                   description: Error message indicating the persona already exists.
+          401:
+            description: Unauthorized. Missing or invalid token.
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Error message.
           500:
             description: Internal Server Error. Failed to create persona.
             schema:
@@ -810,6 +823,14 @@ class PersonaBlueprint:
                 error:
                   type: string
                   description: Error message indicating the issue with the request.
+          401:
+            description: Unauthorized. Missing or invalid token.
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Error message.
           500:
             description: Internal Server Error. Failed to create personas.
             schema:
@@ -948,6 +969,15 @@ class PersonaBlueprint:
                 message:
                   type: string
                   description: A success message indicating the deletion of the persona.
+
+          401:
+            description: Unauthorized. Missing or invalid token.
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Error message.
           404:
             description: Persona not found.
             schema:
@@ -1047,6 +1077,14 @@ class PersonaBlueprint:
                 message:
                   type: string
                   description: A success message indicating the update of the persona.
+          401:
+            description: Unauthorized. Missing or invalid token.
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Error message.
           404:
             description: Persona not found.
             schema:

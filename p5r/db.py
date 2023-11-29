@@ -4,6 +4,7 @@ import json
 from flask import Flask, current_app, g
 from dotenv import load_dotenv
 import psycopg2
+from werkzeug.security import generate_password_hash
 
 
 load_dotenv()
@@ -126,6 +127,33 @@ def init_db():
 
         cur.close()
         db.commit()
+
+        admin_username = click.prompt("Enter admin username")
+        admin_password = click.prompt(
+            "Enter admin password", hide_input=True, confirmation_prompt=True
+        )
+
+        admin_password_hash = generate_password_hash(admin_password)
+
+        db = get_db()
+        cur = db.cursor()
+
+        try:
+            # Insert admin user into the Users table
+            cur.execute(
+                "INSERT INTO Users (username, hash) VALUES (%s, %s)",
+                (admin_username, admin_password_hash),
+            )
+            db.commit()
+
+            click.echo(f"Admin user '{admin_username}' created successfully!")
+
+        except Exception as e:
+            click.echo(f"Error creating admin user: {str(e)}")
+            db.rollback()
+
+        finally:
+            cur.close()
 
 
 @click.command("init-db")
