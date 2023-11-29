@@ -5,8 +5,6 @@ from flasgger import Swagger
 from flask_jwt_extended import JWTManager
 import os
 
-from p5r.users.users import UsersBlueprint
-
 
 load_dotenv()
 
@@ -44,6 +42,7 @@ def create_app(test_config=None):
     from p5r.personas.personas import PersonaBlueprint
     from p5r.skills.skills import SkillsBlueprint
     from p5r.calculator.fusion import FusionCalculatorBlueprint
+    from p5r.users.users import UsersBlueprint
 
     app.register_blueprint(PersonaBlueprint("pesonas", __name__).blueprint)
     app.register_blueprint(SkillsBlueprint("skills", __name__).blueprint)
