@@ -10,9 +10,6 @@ class SkillsBlueprint:
     def setup_routes(self):
         self.blueprint.route("/skills", methods=["GET"])(self.get_all_skills)
         self.blueprint.route("/skills", methods=["POST"])(self.create_skill)
-        self.blueprint.route("/skills/<string:name>", methods=["GET"])(
-            self.get_skill_by_name
-        )
 
     def get_all_skills(self):
         """
@@ -173,79 +170,3 @@ class SkillsBlueprint:
         cursor.close()
 
         return jsonify({"message": "Skill created successfully"}), 201
-
-    def get_skill_by_name(self, name: str):
-        """
-        Get a skill by name
-        ---
-        tags:
-          - Skills
-        parameters:
-          - in: path
-            name: name
-            type: string
-            description: The name of the skill to retrieve.
-            required: true
-        responses:
-          200:
-            description: The requested skill
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  description: The unique identifier for the skill.
-                element:
-                  type: string
-                  description: The elemental affinity of the skill.
-                name:
-                  type: string
-                  description: The name of the skill.
-                cost:
-                  type: integer
-                  description: The cost associated with using the skill.
-                effect:
-                  type: string
-                  description: The effect of the skill.
-                target:
-                  type: string
-                  description: The target of the skill.
-            example:
-              id: 1
-              element: "pas"
-              name: "Absorb Bless"
-              cost: 0
-              effect: "Absorbs Bless dmg"
-              target: "Self"
-          404:
-            description: Skill not found. The requested skill with the given name does not exist.
-            schema:
-              type: object
-              properties:
-                error:
-                  type: string
-                  description: Error message indicating that the skill with the given name was not found.
-        """  # noqa: E501
-
-        db = get_db()
-        cursor = db.cursor()
-
-        cursor.execute(
-            "SELECT * FROM Skills WHERE lower(name) LIKE lower(%s)", ("%" + name + "%",)
-        )
-        skill = cursor.fetchone()
-
-        cursor.close()
-
-        if skill:
-            skill_dict = {
-                "id": skill[0],
-                "element": skill[1],
-                "name": skill[2],
-                "cost": skill[3],
-                "effect": skill[4],
-                "target": skill[5],
-            }
-            return jsonify(skill_dict)
-        else:
-            return jsonify({"error": f"Skill with name '{name}' not found"}), 404
