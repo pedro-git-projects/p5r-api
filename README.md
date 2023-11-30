@@ -75,6 +75,9 @@ docker-compose up -d
 make init
 ```
 
+Nesse ponto, a aplicação pedirá para que você crie um usuário e senha.
+Esses dados serão utilizados posteriormente no frontend para acessar o dashboard do administrador através da rota /login.
+
 7. Suba a aplicação:
 
 ```
