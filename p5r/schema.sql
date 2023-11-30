@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS PersonaResistances, PersonaSkills, PersonaStats, Personas, Skills CASCADE;
+DROP TABLE IF EXISTS PersonaResistances, PersonaSkills, PersonaStats, Personas, Skills, Users CASCADE;
 
 CREATE TABLE Personas (
     id SERIAL PRIMARY KEY,
@@ -52,4 +52,10 @@ CREATE TABLE Skills (
     cost INT NOT NULL,
     effect VARCHAR(255) NOT NULL,
     target VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE, 
+    hash VARCHAR(255) NOT NULL
 );
