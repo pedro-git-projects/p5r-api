@@ -10,7 +10,6 @@ class SkillsBlueprint:
     def setup_routes(self):
         self.blueprint.route("/skills", methods=["GET"])(self.get_all_skills)
         self.blueprint.route("/skills", methods=["POST"])(self.create_skill)
-        self.blueprint.route("/skills/many", methods=["POST"])(self.create_skills)
         self.blueprint.route("/skills/<string:name>", methods=["GET"])(
             self.get_skill_by_name
         )
@@ -174,124 +173,6 @@ class SkillsBlueprint:
         cursor.close()
 
         return jsonify({"message": "Skill created successfully"}), 201
-
-    def create_skills(self):
-        """
-        Create multiple skills
-        ---
-        tags:
-          - Skills
-        parameters:
-          - in: body
-            name: skills_data
-            description: Data to create multiple skills
-            required: true
-            schema:
-              type: array
-              items:
-                type: object
-                properties:
-                  element:
-                    type: string
-                    description: The elemental affinity of the skill.
-                  name:
-                    type: string
-                    description: The name of the skill.
-                  cost:
-                    type: integer
-                    description: The cost associated with using the skill.
-                  effect:
-                    type: string
-                    description: The effect of the skill.
-                  target:
-                    type: string
-                    description: The target of the skill.
-            example:
-              - element: "pas"
-                name: "Absorb Bless"
-                cost: 0
-                effect: "Absorbs Bless dmg"
-                target: "Self"
-              - element: "fire"
-                name: "Fireball"
-                cost: 10
-                effect: "Deals fire damage"
-                target: "Single Enemy"
-        responses:
-          201:
-            description: Skills created successfully
-            schema:
-              type: object
-              properties:
-                message:
-                  type: string
-                  description: A success message indicating the creation of the skills.
-          400:
-            description: Bad Request. Some skills with the given names already exist.
-            schema:
-              type: object
-              properties:
-                error:
-                  type: string
-                  description: Error message indicating that some skills with the given names already exist.
-          500:
-            description: Internal Server Error. Failed to create skills.
-            schema:
-              type: object
-              properties:
-                error:
-                  type: string
-                  description: Error message indicating the failure to create skills.
-        """  # noqa: E501
-
-        db = get_db()
-        cursor = db.cursor()
-
-        data = request.get_json()
-
-        if not isinstance(data, list):
-            cursor.close()
-            return (
-                jsonify({"error": "Invalid data format. Expected a list of skills"}),
-                400,
-            )
-
-        existing_skills = []
-
-        for skill_data in data:
-            element = skill_data.get("element")
-            name = skill_data.get("name")
-            cost = skill_data.get("cost")
-            effect = skill_data.get("effect")
-            target = skill_data.get("target")
-
-            cursor.execute("SELECT id FROM Skills WHERE name = %s", (name,))
-            existing_skill = cursor.fetchone()
-
-            if existing_skill:
-                # If skill already exists, add its name to the list
-                existing_skills.append(name)
-            else:
-                # If skill does not exist, insert it into the database
-                cursor.execute(
-                    """INSERT INTO Skills (element, name, cost, effect, target) 
-                  VALUES (%s, %s, %s, %s, %s)""",
-                    (element, name, cost, effect, target),
-                )
-
-        db.commit()
-
-        cursor.close()
-
-        if existing_skills:
-            return (
-                jsonify(
-                    {"error": f"Skills with names {existing_skills} already exist"}
-                ),
-                400,
-            )
-        else:
-            return jsonify({"message": "Skills created successfully"}), 201
 
     def get_skill_by_name(self, name: str):
         """
